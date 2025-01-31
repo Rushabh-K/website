@@ -262,7 +262,7 @@ a:hover {
 
 <div class="container" id="container">
 <div class="form-container sign-in-container">
-<form action="#">
+<form action="#" id="signInForm">
 <h1>Sign In</h1>
 <input type="email" placeholder="Email" required />
 <input type="password" placeholder="Password" required />
@@ -272,7 +272,7 @@ a:hover {
 </div>
 
 <div class="form-container sign-up-container">
-<form action="#">
+<form action="#" id="signUpForm">
 <h1>Create Account</h1>
 <input type="text" placeholder="Name" required />
 <input type="email" placeholder="Email" required />
@@ -298,16 +298,28 @@ a:hover {
 </div>
 
 <script>
+// Existing container toggle code
 const signUpButton = document.getElementById('signUp');
 const signInButton = document.getElementById('signIn');
 const container = document.getElementById('container');
 
 signUpButton.addEventListener('click', () => {
-container.classList.add('active');
+  container.classList.add('active');
 });
 
 signInButton.addEventListener('click', () => {
-container.classList.remove('active');
+  container.classList.remove('active');
+});
+
+// New form submission handling
+document.getElementById('signInForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  window.location.href = 'Dashboard.html';
+});
+
+document.getElementById('signUpForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  window.location.href = 'Dashboard.html';
 });
 </script>
 </body>
