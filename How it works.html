@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How It Works | Efficient Hours</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Consistent with previous styling */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        :root {
+            --primary: #2A2A72;
+            --secondary: #4B4B7E;
+            --accent: #009FFD;
+            --light: #f8f9fa;
+            --text: #2B2C34;
+        }
+
+        body {
+            background: var(--light);
+            color: var(--text);
+            line-height: 1.8;
+        }
+
+        .header {
+            text-align: center;
+            padding: 6rem 2rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            margin-bottom: 3rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section-title {
+            text-align: center;
+            color: var(--primary);
+            margin: 4rem 0 2rem;
+            font-size: 2.2rem;
+        }
+
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .step-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .step-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .step-icon {
+            font-size: 2.5rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        .feature-highlight {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            margin: 3rem 0;
+            padding: 2rem;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+        }
+
+        .feature-image {
+            flex: 1;
+            max-width: 400px;
+            border-radius: 8px;
+        }
+
+        .feature-content {
+            flex: 2;
+        }
+
+        .benefits-section {
+            background: white;
+            padding: 4rem 2rem;
+            margin: 4rem 0;
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .benefit-card {
+            padding: 1.5rem;
+            border-left: 4px solid var(--accent);
+            background: var(--light);
+            border-radius: 8px;
+        }
+
+        .benefit-card h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .testimonial-section {
+            text-align: center;
+            padding: 4rem 0;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+        }
+
+        .testimonial-card {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+        }
+
+        .testimonial-card p {
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+
+        .testimonial-card span {
+            font-weight: 600;
+        }
+
+        @media (max-width: 768px) {
+            .feature-highlight {
+                flex-direction: column;
+            }
+            
+            .feature-image {
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <h1>How Efficient Hours Works</h1>
+        <p>Transform your daily routine with smart time management tools</p>
+    </header>
+
+    <div class="container">
+        <!-- How It Works Section -->
+        <section class="workflow-section">
+            <h2 class="section-title">Your Path to Productivity</h2>
+            <div class="process-steps">
+                <div class="step-card">
+                    <i class="fas fa-user-plus step-icon"></i>
+                    <h3>1. Sign Up & Set Goals</h3>
+                    <p>Create your account in seconds and define your personal or professional goals.</p>
+                </div>
+
+                <div class="step-card">
+                    <i class="fas fa-tasks step-icon"></i>
+                    <h3>2. Organize Your Tasks</h3>
+                    <p>Break down your goals into manageable tasks with deadlines and priorities.</p>
+                </div>
+
+                <div class="step-card">
+                    <i class="fas fa-chart-line step-icon"></i>
+                    <h3>3. Track & Improve</h3>
+                    <p>Monitor your progress and get insights to optimize your workflow.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Daily Life Benefits Section -->
+        <section class="benefits-section">
+            <h2 class="section-title">How Efficient Hours Helps You Daily</h2>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <h3>Stress Reduction</h3>
+                    <p>Stay on top of your tasks and deadlines, reducing anxiety and last-minute rushes.</p>
+                </div>
+
+                <div class="benefit-card">
+                    <h3>Better Work-Life Balance</h3>
+                    <p>Allocate time for work, hobbies, and relaxation with smart scheduling.</p>
+                </div>
+
+                <div class="benefit-card">
+                    <h3>Increased Focus</h3>
+                    <p>Use the Pomodoro timer to maintain focus and avoid distractions.</p>
+                </div>
+
+                <div class="benefit-card">
+                    <h3>Improved Productivity</h3>
+                    <p>Complete more tasks in less time with efficient task management.</p>
+                </div>
+
+                <div class="benefit-card">
+                    <h3>Enhanced Organization</h3>
+                    <p>Keep all your tasks, deadlines, and meetings in one place.</p>
+                </div>
+
+                <div class="benefit-card">
+                    <h3>Personal Growth</h3>
+                    <p>Track your progress and celebrate small wins to stay motivated.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Feature Highlights Section -->
+        <section class="core-features">
+            <h2 class="section-title">Key Features for Daily Success</h2>
+
+            <div class="feature-highlight">
+                <img src="https://via.placeholder.com/400x300" alt="Task Management" class="feature-image">
+                <div class="feature-content">
+                    <h3>Smart Task Management</h3>
+                    <ul>
+                        <li>Create and prioritize tasks with ease</li>
+                        <li>Set reminders and deadlines</li>
+                        <li>Collaborate with teams in real-time</li>
+                        <li>Track progress with visual charts</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="feature-highlight reverse">
+                <div class="feature-content">
+                    <h3>Focus-Driven Timer</h3>
+                    <ul>
+                        <li>Customizable Pomodoro sessions</li>
+                        <li>Auto-break scheduling</li>
+                        <li>Distraction-free mode</li>
+                        <li>Productivity analytics</li>
+                    </ul>
+                </div>
+                <img src="https://via.placeholder.com/400x300" alt="Pomodoro Timer" class="feature-image">
+            </div>
+
+            <div class="feature-highlight">
+                <img src="https://via.placeholder.com/400x300" alt="Calendar Sync" class="feature-image">
+                <div class="feature-content">
+                    <h3>Integrated Calendar</h3>
+                    <ul>
+                        <li>Sync across all devices</li>
+                        <li>Automatic deadline reminders</li>
+                        <li>Team availability checker</li>
+                        <li>Smart meeting scheduler</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+       
+    </div>
+</body>
+</html>

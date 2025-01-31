@@ -1,13 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Efficient Hours - Smart Services</title>
+    <title>About Us | Efficient Hours</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="stylesheet" href="website style.css">
-
+    
     <meta http-equiv="origin-trial"
     content="A/kargTFyk8MR5ueravczef/wIlTkbVk1qXQesp39nV+xNECPdLBVeYffxrM8TmZT6RArWGQVCJ0LRivD7glcAUAAACQeyJvcmlnaW4iOiJodHRwczovL2dvb2dsZS5jb206NDQzIiwiZmVhdHVyZSI6IkRpc2FibGVUaGlyZFBhcnR5U3RvcmFnZVBhcnRpdGlvbmluZzIiLCJleHBpcnkiOjE3NDIzNDIzOTksImlzU3ViZG9tYWluIjp0cnVlLCJpc1RoaXJkUGFydHkiOnRydWV9">
   <meta charset="utf-8">
@@ -71,223 +69,134 @@
       }
     }
   </script>
+
+
+
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            font-family: 'Segoe UI', sans-serif;
         }
 
         :root {
-            --primary: #1A1A4E;
-            --secondary: #0077B6;
-            --accent: #FF4D6D;
-            --dark: #0A0A2A;
-            --light: #F8F9FF;
+            --primary: #2A2A72;
+            --secondary: #4B4B7E;
+            --accent: #009FFD;
+            --light: #f8f9fa;
             --text: #2B2C34;
         }
 
         body {
             background: var(--light);
-            line-height: 1.6;
             color: var(--text);
+            line-height: 1.8;
+        }
+
+        .university-badge {
+            width: 120px;
+            margin-bottom: 1.5rem;
+            filter: brightness(0) invert(1);
         }
 
         .container {
-            max-width: 1280px;
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 2rem;
+            padding: 0 2rem;
         }
 
-        .header {
+        .section-title {
             text-align: center;
-            padding: 6rem 0 8rem;
-            background: linear-gradient(135deg, var(--primary), var(--dark));
-            color: white;
-            clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
-            margin-bottom: 4rem;
-            position: relative;
-            overflow: hidden;
+            color: var(--primary);
+            margin: 4rem 0 2rem;
+            font-size: 2.2rem;
         }
 
-        .header::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1));
-            transform: rotate(45deg);
-            animation: shine 20s infinite linear;
-        }
-
-        .header h1 {
-            font-size: 4rem;
-            margin-bottom: 1.5rem;
-            font-weight: 800;
-            letter-spacing: -0.05em;
-            position: relative;
-        }
-
-        .header p {
-            font-size: 1.4rem;
-            opacity: 0.9;
-            max-width: 600px;
-            margin: 0 auto;
-            position: relative;
-        }
-
-        .services-grid {
+        .tech-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2.5rem;
-            margin-top: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
         }
 
-        .service-card {
+        .tech-card {
             background: white;
             padding: 2rem;
-            border-radius: 20px;
-            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
-            transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
-                box-shadow 0.4s ease;
-            position: relative;
-            overflow: hidden;
-            border: 1px solid rgba(0, 0, 0, 0.05);
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease;
+            text-align: center;
         }
 
-        .service-card:hover {
-            transform: translateY(-12px) scale(1.02);
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12);
+        .tech-card:hover {
+            transform: translateY(-5px);
         }
 
-        .service-icon {
-            font-size: 3rem;
+        .tech-icon {
+            font-size: 2.5rem;
             color: var(--accent);
-            margin-bottom: 2rem;
-            filter: drop-shadow(0 4px 6px rgba(255, 77, 109, 0.2));
-        }
-
-        .service-card h3 {
-            font-size: 1.6rem;
-            margin-bottom: 1.5rem;
-            color: var(--primary);
-            position: relative;
-            font-weight: 700;
-        }
-
-        .service-card h3::after {
-            content: '';
-            position: absolute;
-            bottom: -0.8rem;
-            left: 0;
-            width: 50px;
-            height: 3px;
-            background: var(--accent);
-            transition: width 0.3s ease;
-        }
-
-        .service-card:hover h3::after {
-            width: 80px;
-        }
-
-        .service-features {
-            list-style: none;
-            margin: 2rem 0;
-            padding-left: 0;
-        }
-
-        .service-features li {
-            position: relative;
-            padding-left: 2rem;
             margin-bottom: 1rem;
-            font-size: 1rem;
-            color: var(--text);
-            line-height: 1.8;
         }
 
-        .service-features li::before {
-            content: '✓';
-            position: absolute;
-            left: 0;
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .team-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+            text-align: center;
+        }
+
+        .profile-pic {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            margin: 0 auto 1rem;
+            border: 3px solid var(--accent);
+            padding: 3px;
+            object-fit: cover;
+        }
+
+        .accent-text {
             color: var(--accent);
-            font-weight: 700;
-            font-size: 1.1rem;
+            font-weight: 600;
         }
 
-        .service-card p {
-            color: var(--text);
-            margin-bottom: 1.5rem;
-            font-size: 1.1rem;
-            opacity: 0.9;
+        footer {
+            background: var(--primary);
+            color: white;
+            padding: 2rem;
+            margin-top: 4rem;
+            text-align: center;
+        }
+
+        .project-details {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
             line-height: 1.8;
-        }
-
-        @keyframes shine {
-            0% {
-                transform: translateX(-100%) rotate(45deg);
-            }
-
-            100% {
-                transform: translateX(100%) rotate(45deg);
-            }
-        }
-
-        @media (max-width: 1024px) {
-            .header h1 {
-                font-size: 3rem;
-            }
-
-            .service-card {
-                padding: 2rem;
-            }
+            font-size: 1.1rem;
         }
 
         @media (max-width: 768px) {
             .header {
-                padding: 4rem 0 6rem;
+                padding: 3rem 1rem;
             }
-
-            .header h1 {
-                font-size: 2.5rem;
+            
+            .section-title {
+                font-size: 1.8rem;
             }
-
-            .header p {
-                font-size: 1.2rem;
-            }
-
-            .services-grid {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .container {
-                padding: 1.5rem;
-            }
-
-            .service-card {
-                padding: 1.5rem;
-            }
-
-            .service-icon {
-                font-size: 2.5rem;
-                margin-bottom: 1.5rem;
-            }
-        }
-        #sb-navigation {
-           position: sticky;
         }
     </style>
 </head>
-
 <body>
-    
-
-
     <div id="sb-navigation" class="">
         <!--htmlhint attr-no-duplication:false -->
     
@@ -846,83 +755,59 @@
     
       </div>
 
-
-
     <div class="container">
-        <div class="services-grid">
-            <div class="service-card">
-                <i class="fas fa-project-diagram service-icon"></i>
-                <h3>Project Management</h3>
-                <p>End-to-end project planning and execution with advanced collaboration features</p>
-                <ul class="service-features">
-                    <li>Gantt charts & timelines</li>
-                    <li>Resource allocation</li>
-                    <li>Milestone tracking</li>
-                    <li>Team workload management</li>
-                </ul>
+        <section class="about-section">
+            <h2 class="section-title">About The Project</h2>
+            <div class="project-details">
+                <p>Developed as part of the <span class="accent-text">ASAP Semester 1 curriculum</span> at Vishwakarma Institute of Technology, Pune, Efficient Hours is an innovative time management solution that incorporates cutting-edge technologies from our specialization in:</p>
             </div>
 
-            <div class="service-card">
-                <i class="fas fa-comments service-icon"></i>
-                <h3>Team Collaboration</h3>
-                <p>Real-time communication hub with integrated messaging system</p>
-                <ul class="service-features">
-                    <li>Threaded conversations</li>
-                    <li>File sharing</li>
-                    <li>Video conferencing</li>
-                    <li>Project-specific channels</li>
-                </ul>
-            </div>
+            <div class="tech-grid">
+                <div class="tech-card">
+                    <i class="fas fa-wifi tech-icon"></i>
+                    <h3>IoT Integration</h3>
+                    <p>Smart device synchronization and sensor-based activity tracking systems</p>
+                </div>
 
-            <div class="service-card">
-                <i class="fas fa-file-invoice-dollar service-icon"></i>
-                <h3>Billing & Finance</h3>
-                <p>Comprehensive financial management for teams and freelancers</p>
-                <ul class="service-features">
-                    <li>Automated invoicing</li>
-                    <li>Expense tracking</li>
-                    <li>Multi-currency support</li>
-                    <li>Tax compliance tools</li>
-                </ul>
-            </div>
+                <div class="tech-card">
+                    <i class="fas fa-shield-alt tech-icon"></i>
+                    <h3>Cyber Security</h3>
+                    <p>Enterprise-grade encryption and secure data management protocols</p>
+                </div>
 
-            <div class="service-card">
-                <i class="fas fa-chart-line service-icon"></i>
-                <h3>Productivity Analytics</h3>
-                <p>Data-driven insights to optimize team performance</p>
-                <ul class="service-features">
-                    <li>Custom reports</li>
-                    <li>Time tracking metrics</li>
-                    <li>Workload balance</li>
-                    <li>Export to PDF/Excel</li>
-                </ul>
+                <div class="tech-card">
+                    <i class="fas fa-link tech-icon"></i>
+                    <h3>Blockchain</h3>
+                    <p>Decentralized verification systems and immutable activity logs</p>
+                </div>
             </div>
+        </section>
 
-            <div class="service-card">
-                <i class="fas fa-clock service-icon"></i>
-                <h3>Smart Time Tracking</h3>
-                <p>Intelligent time management solutions</p>
-                <ul class="service-features">
-                    <li>Pomodoro technique</li>
-                    <li>Auto-time mapping</li>
-                    <li>Focus sessions</li>
-                    <li>Break reminders</li>
-                </ul>
-            </div>
+        <section class="team-section">
+            <h2 class="section-title">Development Team</h2>
+            <div class="team-grid">
+                <div class="team-card">
+                    <img src="https://via.placeholder.com/120" alt="Team Member" class="profile-pic">
+                    <h3>Rushabh Kalme</h3>
+                    <p class="accent-text">FrontEnd <br>Backend <br> Design</p>
+                </div>
 
-            <div class="service-card">
-                <i class="fas fa-calendar-alt service-icon"></i>
-                <h3>Integrated Calendar</h3>
-                <p>Unified scheduling across all platforms</p>
-                <ul class="service-features">
-                    <li>Team availability</li>
-                    <li>Meeting scheduler</li>
-                    <li>Deadline alerts</li>
-                    <li>Cross-platform sync</li>
-                </ul>
+                <div class="team-card">
+                    <img src="https://via.placeholder.com/120" alt="Team Member" class="profile-pic">
+                    <h3>Narendra Kavhet</h3>
+                    <p class="accent-text">FrontEnd <br>Backend <br> Design</p>
+                </div>
+
+                <div class="team-card">
+                    <img src="https://via.placeholder.com/120" alt="Team Member" class="profile-pic">
+                    <h3>Alex Johnson</h3>
+                    <p class="accent-text">Full Stack Developer</p>
+                    <p>System Design</p>
+                </div>
             </div>
-        </div>
+        </section>
     </div>
+
     <div id="sb-footer">
         <script src="/assets/bundle-26df06bbde665912c7803cd668f15047.js"></script>
         <!--htmlhint attr-no-duplication:false -->
@@ -1099,5 +984,4 @@
     
       </div>
 </body>
-
 </html>
