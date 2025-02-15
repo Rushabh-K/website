@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Manager</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            display: flex;
+            min-height: 100vh;
+            background-color: #f6d6d6;
+        }
+
+        .sidebar {
+            width: 250px;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 20px;
+            height: 100vh;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            left: 0;
+            top: 0;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            border: 3px solid rgba(255, 255, 255, 0.5);
+        }
+
+        .sidebar h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .menu {
+            list-style: none;
+            padding: 0;
+        }
+
+        .menu li {
+            margin-bottom: 15px;
+        }
+
+        .menu a {
+            display: flex;
+            align-items: center;
+            color: #333;
+            text-decoration: none;
+            padding: 12px;
+            border-radius: 12px;
+            transition: 0.3s;
+        }
+
+        .menu a:hover {
+            background-color: #e0d7ff;
+            color: #6c5ce7;
+        }
+
+        .menu span {
+            margin-right: 10px;
+        }
+
+        .upgrade {
+            background: linear-gradient(135deg, #b085f5, #7c4dff);
+            color: white;
+            text-align: center;
+            padding: 15px;
+            border-radius: 20px;
+            margin-top: 20px;
+        }
+
+        .upgrade h4 {
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+        .upgrade-btn {
+            background: white;
+            color: #6c5ce7;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .main-content {
+            margin-left: 250px;
+            width: calc(100% - 250px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .task-container {
+            background-color: #ff7f50;
+            border-radius: 16px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            color: #fff;
+            padding: 20px;
+            width: 350px;
+            text-align: center;
+        }
+
+        .task-section h3 {
+            margin-bottom: 15px;
+        }
+
+        .add-task, .refresh-tasks {
+            background-color: #fff;
+            color: #ff7f50;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            margin: 5px;
+        }
+
+        .task-list {
+            margin-top: 15px;
+            list-style: none;
+            padding: 0;
+        }
+
+        .task-list li {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .delete-task {
+            background: none;
+            border: none;
+            color: red;
+            font-size: 16px;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <h2>Asep Group</h2>
+        <ul class="menu">
+            <li><a href="#"><span class="material-symbols-outlined">dashboard</span> Dashboard</a></li>
+            <li><a href="#"><span class="material-symbols-outlined">task</span> My Tasks</a></li>
+            <li><a href="#"><span class="material-symbols-outlined">check_box</span> Project</a></li>
+            <li><a href="#"><span class="material-symbols-outlined">task</span> My Task</a></li>
+            <li><a href="#"><span class="material-symbols-outlined">chat_bubble</span> Message</a></li>
+            <li><a href="#"><span class="material-symbols-outlined">account_balance_wallet</span> My Billing</a></li>
+        </ul>
+        <div class="upgrade">
+            <h4>Upgrade to <strong>PRO</strong> for more features</h4>
+            <button class="upgrade-btn">Upgrade</button>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <div class="task-container">
+            <div class="task-section">
+                <h3>Daily Tasks</h3>
+                <button class="add-task" onclick="addTask()">+ Add Task</button>
+                <button class="refresh-tasks" onclick="clearTasks()">🔄 Refresh</button>
+                <ul class="task-list"></ul>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function addTask() {
+            const taskText = prompt("Enter a new task:");
+            if (taskText) {
+                const taskList = document.querySelector(".task-list");
+                const li = document.createElement("li");
+                li.innerHTML = `${taskText} <button class='delete-task' onclick='deleteTask(this)'>🗑</button>`;
+                taskList.appendChild(li);
+            }
+        }
+
+        function deleteTask(button) {
+            button.parentElement.remove();
+        }
+
+        function clearTasks() {
+            document.querySelector(".task-list").innerHTML = "";
+        }
+    </script>
+</body>
+</html>
