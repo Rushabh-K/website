@@ -7,6 +7,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pomodoro Timer</title>
+    <link rel="stylesheet" href="pomodoro.css">
     <style>
       
       .sidebar {
@@ -154,38 +155,97 @@
 </head>
 <body>
     <body>
-        <div class="sidebar">
-            <h2>Asep Group</h2>
-            <ul class="menu">
-                <li><a href="#"><span class="material-symbols-outlined">dashboard</span> Dashboard</a></li>
-                <li><a href="#"><span class="material-symbols-outlined">check_box</span> Project</a></li>
-                <li><a href="#"><span class="material-symbols-outlined">group</span> Pomodoro</a></li>
-                <li><a href="#"><span class="material-symbols-outlined">task</span> My Task</a></li>
-                <li><a href="#"><span class="material-symbols-outlined">chat_bubble</span> Message</a></li>
-                <li><a href="#"><span class="material-symbols-outlined">account_balance_wallet</span> My Billing</a></li>
-            </ul>
-            <div class="upgrade">
-                <h4>Upgrade to <strong>PRO</strong> for more features</h4>
-                <button class="upgrade-btn">Upgrade</button>
+        <div class="container">
+            <div class="left">
+                <header>
+                    <div class="logo">
+                        <h2>Asep Group</h2>
+                        <div class="close">
+                            <span class="material-symbols-outlined">
+                                close
+                            </span>
+                        </div>
+                    </div>
+                    <nav>
+                        <ul>
+                            <li>
+                                <a href="#">
+                                    <span class="material-symbols-outlined full">
+                                        dashboard
+                                    </span>
+                                    <span class="title">Dashboard</tspan>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <span class="material-symbols-outlined ">
+                                    check_box
+                                    </span>
+                                    <span class="title">Project</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <span class="material-symbols-outlined ">
+                                      timer
+                                    </span>
+                                    <span class="title">Pomodoro</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <span class="material-symbols-outlined ">
+                                    task
+                                    </span>
+                                    <span class="title">My Task</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <span class="material-symbols-outlined ">
+                                chat_bubble
+                                    </span>
+                                    <span class="title">Message</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="http://127.0.0.1:5502/billings.html">
+                                    <span class="material-symbols-outlined ">
+                                    account_balance_wallet
+                                    </span>
+                                    <span class="title">My Billing</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </header>
+                <div class="upgrade">
+                    <h4>UPgrade to<bold>PRO</bold> for<br> more features</h4>
+                    <div class="upbtn">
+                        <button>Upgrade</button>
+                    </div>
+                </div>
             </div>
+     <main>
+            <div class="right">
+                <div class="pomodoro-container">
+                    <div class="tabs">
+                        <button class="active" onclick="setTimer(1500, this)">Pomodoro</button>
+                        <button onclick="setTimer(300, this)">Short Break</button>
+                        <button onclick="setTimer(900, this)">Long Break</button>
+                    </div>
+                    <div class="timer">25:00</div>
+                    <button class="start-button" onclick="toggleTimer()">START</button>
+                    <div class="task-section">
+                        <h3>Tasks</h3>
+                        <button class="add-task" onclick="addTask()">+ Add Task</button>
+                        <ul class="task-list"></ul>
+                    </div>
+                </div>
+            </div>
+        </main>
         </div>
-    
-    <div class="main-content">
-        <div class="pomodoro-container">
-            <div class="tabs">
-                <button class="active" onclick="setTimer(1500, this)">Pomodoro</button>
-                <button onclick="setTimer(300, this)">Short Break</button>
-                <button onclick="setTimer(900, this)">Long Break</button>
-            </div>
-            <div class="timer">25:00</div>
-            <button class="start-button" onclick="toggleTimer()">START</button>
-            <div class="task-section">
-                <h3>Tasks</h3>
-                <button class="add-task" onclick="addTask()">+ Add Task</button>
-                <ul class="task-list"></ul>
-            </div>
-        </div>
-    </div>
+
 
     <script>
         let timer;
