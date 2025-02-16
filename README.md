@@ -1,4 +1,4 @@
-# website
+# Time Management Website
  This is time management website developing for ASEP-1 college project 
 Time management is the process of planning and controlling how much time to spend on specific activities. 
 Good time management enables an individual to complete more in a shorter period of time,
