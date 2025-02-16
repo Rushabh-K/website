@@ -1,25 +1,36 @@
-const { createServer } = require('node:http');
-const fs = require('node:fs');
+const express = require('express');
 const path = require('node:path');
+const app = express();
 
-const hostname = '127.0.0.1';
-const port = 3000;
+// Middleware
+app.use(express.static('public'));
 
-const server = createServer((req, res) => {
-  // Read the HTML file
-  fs.readFile(path.join(__dirname, 'public/website.html'), (err, data) => {
-    if (err) {
-      res.statusCode = 500;
-      res.end('Error loading the page');
-      return;
-    }
-    
-    res.statusCode = 200;
-    res.setHeader('Content-Type', 'text/html');
-    res.end(data);
-  });
+// Routes
+app.get('/website', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public/website.html'));
 });
 
-server.listen(port, hostname, () => {
-  console.log(`Server running at http://${hostname}:${port}/`);
+app.get("/login", (req, res) => {
+    res.sendFile(path.join(__dirname, "public/login.html"));
+});
+app.get("/about", (req, res) => {
+    res.sendFile(path.join(__dirname, "public/About us.html"));
+});
+app.get("/services", (req, res) => {
+    res.sendFile(path.join(__dirname, "public/services.html"));
+});
+app.get("/pricing", (req, res) => {
+    res.sendFile(path.join(__dirname, "public/Pricing.html")); 
+  });
+  app.get("/How-it-works", (req, res) => {
+    res.sendFile(path.join(__dirname, "public/How it works.html")); 
+  });
+
+
+// Server configuration
+const port = 3000;
+const hostname = 'localhost';
+
+app.listen(port, hostname, () => {
+    console.log(`Server running at http://${hostname}:${port}/website`);
 });
