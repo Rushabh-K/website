@@ -1,203 +1,156 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Task Manager</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: Arial, sans-serif;
-        }
-
-        body {
-            display: flex;
-            min-height: 100vh;
-            background-color: #f6d6d6;
-        }
-
-        .sidebar {
-            width: 250px;
-            background: rgba(255, 255, 255, 0.2);
-            padding: 20px;
-            height: 100vh;
-            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
-            position: fixed;
-            left: 0;
-            top: 0;
-            border-radius: 20px;
-            backdrop-filter: blur(10px);
-            border: 3px solid rgba(255, 255, 255, 0.5);
-        }
-
-        .sidebar h2 {
-            text-align: center;
-            color: #333;
-            margin-bottom: 20px;
-        }
-
-        .menu {
-            list-style: none;
-            padding: 0;
-        }
-
-        .menu li {
-            margin-bottom: 15px;
-        }
-
-        .menu a {
-            display: flex;
-            align-items: center;
-            color: #333;
-            text-decoration: none;
-            padding: 12px;
-            border-radius: 12px;
-            transition: 0.3s;
-        }
-
-        .menu a:hover {
-            background-color: #e0d7ff;
-            color: #6c5ce7;
-        }
-
-        .menu span {
-            margin-right: 10px;
-        }
-
-        .upgrade {
-            background: linear-gradient(135deg, #b085f5, #7c4dff);
-            color: white;
-            text-align: center;
-            padding: 15px;
-            border-radius: 20px;
-            margin-top: 20px;
-        }
-
-        .upgrade h4 {
-            font-size: 14px;
-            margin-bottom: 10px;
-        }
-
-        .upgrade-btn {
-            background: white;
-            color: #6c5ce7;
-            border: none;
-            padding: 8px 15px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-weight: bold;
-        }
-
-        .main-content {
-            margin-left: 250px;
-            width: calc(100% - 250px);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-        }
-
-        .task-container {
-            background-color: #ff7f50;
-            border-radius: 16px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            color: #fff;
-            padding: 20px;
-            width: 350px;
-            text-align: center;
-        }
-
-        .task-section h3 {
-            margin-bottom: 15px;
-        }
-
-        .add-task, .refresh-tasks {
-            background-color: #fff;
-            color: #ff7f50;
-            border: none;
-            padding: 10px 20px;
-            font-size: 16px;
-            border-radius: 8px;
-            cursor: pointer;
-            font-weight: bold;
-            margin: 5px;
-        }
-
-        .task-list {
-            margin-top: 15px;
-            list-style: none;
-            padding: 0;
-        }
-
-        .task-list li {
-            background: rgba(255, 255, 255, 0.2);
-            padding: 10px;
-            margin: 5px 0;
-            border-radius: 8px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .delete-task {
-            background: none;
-            border: none;
-            color: red;
-            font-size: 16px;
-            cursor: pointer;
-            margin-left: 10px;
-        }
-    </style>
+    <title>Billing Page</title>
+    <link rel="stylesheet" href="mytaks.css">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
 </head>
 <body>
-    <div class="sidebar">
-        <h2>Asep Group</h2>
-        <ul class="menu">
-            <li><a href="#"><span class="material-symbols-outlined">dashboard</span> Dashboard</a></li>
-            <li><a href="#"><span class="material-symbols-outlined">task</span> My Tasks</a></li>
-            <li><a href="#"><span class="material-symbols-outlined">check_box</span> Project</a></li>
-            <li><a href="#"><span class="material-symbols-outlined">task</span> My Task</a></li>
-            <li><a href="#"><span class="material-symbols-outlined">chat_bubble</span> Message</a></li>
-            <li><a href="#"><span class="material-symbols-outlined">account_balance_wallet</span> My Billing</a></li>
-        </ul>
-        <div class="upgrade">
-            <h4>Upgrade to <strong>PRO</strong> for more features</h4>
-            <button class="upgrade-btn">Upgrade</button>
-        </div>
-    </div>
-
-    <div class="main-content">
-        <div class="task-container">
-            <div class="task-section">
-                <h3>Daily Tasks</h3>
-                <button class="add-task" onclick="addTask()">+ Add Task</button>
-                <button class="refresh-tasks" onclick="clearTasks()">🔄 Refresh</button>
-                <ul class="task-list"></ul>
+    <div class="container">
+        <div class="left">
+            <header>
+                <div class="logo">
+                    <h2>Asep Group</h2>
+                    <div class="close">
+                        <span class="material-symbols-outlined">close</span>
+                    </div>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="#"><span class="material-symbols-outlined full">dashboard</span><span class="title">Dashboard</span></a></li>
+                        <li><a href="#"><span class="material-symbols-outlined">check_box</span><span class="title">Project</span></a></li>
+                        <li><a href="#"><span class="material-symbols-outlined">Timer</span><span class="title">Pomodoro</span></a></li>
+                        <li><a href="#"><span class="material-symbols-outlined">task</span><span class="title">My Task</span></a></li>
+                        <li><a href="#"><span class="material-symbols-outlined">chat_bubble</span><span class="title">Message</span></a></li>
+                        <li class="active"><a href="#"><span class="material-symbols-outlined">account_balance_wallet</span><span class="title">My Billing</span></a></li>
+                    </ul>
+                </nav>
+            </header>
+            <div class="upgrade">
+                <h4>UPgrade to<bold>PRO</bold> for<br> more features</h4>
+                <div class="upbtn"><button>Upgrade</button></div>
             </div>
         </div>
-    </div>
-
+        <div class="naren"><h2>My Tasks</h2></div>
+        <div class="right">
+            <div class="search-filter">
+                <input type="text" id="search" placeholder="Search tasks...">
+                <select id="filter">
+                    <option value="all">All</option>
+                    <option value="low">Low Priority</option>
+                    <option value="medium">Medium Priority</option>
+                    <option value="high">High Priority</option>
+                </select>
+            </div>
+            <div class="tasklist">
+                <section id="task-list">
+                    <ul id="tasks"></ul>
+                    <button id="add-task">Add New Task</button>
+                </section>
+            </div>
+            <div class="taskdetails">
+                <section id="task-details" style="display: none;">
+                    <h2>Task Details</h2>
+                    <form id="task-form">
+                        <label for="task-name">Task Name:</label>
+                        <input type="text" id="task-name" name="task-name" required>
+                        <label for="priority">Priority:</label>
+                        <select id="priority" name="priority">
+                            <option value="low">Low</option>
+                            <option value="medium">Medium</option>
+                            <option value="high">High</option>
+                        </select>
+                        <label for="due-date">Due Date:</label>
+                        <input type="date" id="due-date" name="due-date" required>
+                        <label for="task-progress">Progress:</label>
+                        <input type="number" id="task-progress" name="task-progress" min="0" max="100" required>
+                        <button type="submit">Save Task</button>
+                        <button type="button" id="cancel-task">Cancel</button>
+                    </form>
+                </section>
+            </div>
+        </div>
+        
     <script>
-        function addTask() {
-            const taskText = prompt("Enter a new task:");
-            if (taskText) {
-                const taskList = document.querySelector(".task-list");
-                const li = document.createElement("li");
-                li.innerHTML = `${taskText} <button class='delete-task' onclick='deleteTask(this)'>🗑</button>`;
-                taskList.appendChild(li);
-            }
-        }
+        let tasks = [];
+const taskList = document.getElementById('tasks');
+const taskForm = document.getElementById('task-form');
+const taskDetails = document.getElementById('task-details');
+const addTaskBtn = document.getElementById('add-task');
+const cancelTaskBtn = document.getElementById('cancel-task');
+const taskNameInput = document.getElementById('task-name');
+const priorityInput = document.getElementById('priority');
+const dueDateInput = document.getElementById('due-date');
+const progressInput = document.getElementById('task-progress');
+const searchInput = document.getElementById('search');
+const filterSelect = document.getElementById('filter');
 
-        function deleteTask(button) {
-            button.parentElement.remove();
-        }
+addTaskBtn.addEventListener('click', () => {
+    taskDetails.style.display = 'block';
+});
 
-        function clearTasks() {
-            document.querySelector(".task-list").innerHTML = "";
-        }
+cancelTaskBtn.addEventListener('click', () => {
+    taskDetails.style.display = 'none';
+});
+
+taskForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const task = {
+        name: taskNameInput.value,
+        priority: priorityInput.value,
+        dueDate: dueDateInput.value,
+        progress: progressInput.value,
+    };
+
+    tasks.push(task);
+    renderTasks();
+    taskDetails.style.display = 'none';
+    taskForm.reset();
+});
+
+function renderTasks() {
+    taskList.innerHTML = '';
+    tasks.forEach((task, index) => {
+        const taskItem = document.createElement('li');
+        taskItem.innerHTML = `
+            <span>${task.name}</span>
+            <span>Priority: ${task.priority}</span>
+            <span>Due Date: ${task.dueDate}</span>
+            <span>Progress: ${task.progress}%</span>
+        `;
+        taskList.appendChild(taskItem);
+    });
+}
+
+searchInput.addEventListener('input', filterTasks);
+filterSelect.addEventListener('change', filterTasks);
+
+function filterTasks() {
+    const query = searchInput.value.toLowerCase();
+    const filter = filterSelect.value;
+
+    const filteredTasks = tasks.filter((task) => {
+        const matchesQuery = task.name.toLowerCase().includes(query);
+        const matchesFilter = filter === 'all' || task.priority === filter;
+        return matchesQuery && matchesFilter;
+    });
+
+    taskList.innerHTML = '';
+    filteredTasks.forEach((task, index) => {
+        const taskItem = document.createElement('li');
+        taskItem.innerHTML = `
+            <span>${task.name}</span>
+            <span>Priority: ${task.priority}</span>
+            <span>Due Date: ${task.dueDate}</span>
+            <span>Progress: ${task.progress}%</span>
+        `;
+        taskList.appendChild(taskItem);
+    });
+}
+
     </script>
 </body>
 </html>
