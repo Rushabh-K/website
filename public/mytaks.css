@@ -1,187 +1,260 @@
-/* task.css */
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
+*{
+    margin:0;
     padding: 0;
-    background-color: #f4f4f4;
+    box-sizing: border-box;
+    font-family: Dubai;
+ }
+     body {
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         min-height: 100vh;
+         background: linear-gradient(#edf6f9, #ddd);
+     }
+ 
+ .full {
+   font-variation-settings:
+   'FILL' 1,
+   'wght' 400,
+   'GRAD' 0,
+   'opsz' 48
+ }
+ ::-webkit-scrollbar{
+     width: 10px;
+ 
+ }
+ ::-webkit-scrollbar-track{
+     background-color: #f4dbfb;
+ }
+ ::-webkit-scrollbar-thumb{
+     background-color: #973bb0;
+     border-radius: 10px;
+     border: 3px solid #fff;
+ }
+ .container {
+     position: relative;
+     width: 95%;
+     height: 95vh;
+     background: rgba(255, 255, 255, 0.2);
+     border-radius: 25px;
+     backdrop-filter: blur(10px);
+     border: 5px solid #fff;
+     box-shadow: 0 0 5px rgba(0, 0, 0, .1),
+                 0 0 10px rgba(0, 0, 0, .2),
+                 0 0 15px rgba(0, 0, 0, .2);
+     padding: 20px;
+     display: flex;
+     gap: 20px;
+     overflow: hidden;
+ }
+ .container .left {
+     position: relative;
+     width: 250px;
+     height: 100%;
+     background: rgba(255, 255, 255, 1);
+     backdrop-filter: blur(5px);
+     border-radius: 20px;
+     box-shadow: inset -8px -8px 16px rgba(255, 255, 255, 0.6),
+                 inset 0px 11px 28px rgba(255, 255, 255, 0.6);
+     display: flex;
+     justify-content: space-between;
+     align-items: center;
+     flex-direction: column;
+     padding: 20px 0;
+ }
+ .container .left header{
+     position: relative;
+     width: 100%;
+ 
+ }
+ .container .left header .logo{
+  position: relative;
+  margin-bottom: 15px;
+  padding-left: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+ }
+ .container .left header .logo h2{
+     font-size: 1.2em;
+     font-weight: 500;
+     cursor: pointer;
+     color: #000;
+ }
+ .container .left header .logo .close{
+     position: relative;
+     left: -20px;
+     width: 20px;
+     height: 20px;
+     text-align: center;
+     line-height: 20px;
+     cursor:pointer;
+     display: none;
+ 
+ }
+ .container .left header nav{
+     position: relative;
+     padding: 20px 0 20px 20px;
+ 
+ }
+ .container .left header nav ul{
+     position: relative;
+     display: flex;
+     justify-content: center;
+     align-items: flex-start;
+     flex-direction: column;
+     gap: 10px;
+ }
+ .container .left header nav ul li{
+ position: relative;
+ width: 100%;
+ height: 50px;
+ list-style: none;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ 
+ }
+ .container .left header nav ul li a{
+ position: relative;
+ width: 100%;
+ height: 100%;
+ display: flex;
+ justify-content: flex-start;
+ align-items: center;
+ text-decoration: none;
+ padding-left: 20px;
+ border-top-left-radius: 10px;
+ border-bottom-right-radius:10px ;
+ transition: .3s ease;
+ 
+ }
+ .container .left header nav ul li:nth-child(2) a,
+ .container .left header nav ul li a:hover{
+ transition: 0%;
+ background: #ecefff;
+ }
+ .container .left header nav ul li a::before {
+    content: "";
+    position: absolute;
+    right: 0;
+    width: 0;
+    height: 100%;
+    /* background: #6577ff; */
+    transition: .3s ease;
 }
-
-.container {
+ .container .left header nav ul li:first-child a::before,
+ .container .left header nav ul li a:hover::before{
+    width: 4px; 
+ 
+ }
+ .container .left header nav ul li a .material-symbols-outlined{
+     color: #999;
+     font-size: 1.7em;
+     margin-right: 10px;
+ 
+ }
+ .container .left header nav ul li a .title{
+     color: #999;
+     font-size: 1.1em;
+     transition: 0.3s ease;
+ 
+ }
+ .container .left header nav ul:first-child a .material-symbols-outlined
+ .container .left header nav ul:first-child a .title,
+ .container .left header nav ul li a:hover .material-symbols-outlined,
+ .container .left header nav ul li a:hover .title{
+     color: #6577ff;  
+ }
+ .container .left .upgrade{
+     position: relative;
+     width: calc(100% - 30px);
+     height: 180px;
+     background: linear-gradient(145deg, #d488e8, #8389f9);
+     border-radius: 20px;
+     text-align: center;
+     display: flex;
+     justify-content: space-between;
+     align-items: center;
+     flex-direction: column;
+     padding: 10px;
+     z-index: -1;
+     overflow: hidden;
+ }
+ .container .left .upgrade h4{
+ color: #fff;
+ font-size: 1.2em;
+ font-weight: 400;
+ margin-top: 25px;
+ }
+ .container .left .upgrade h4 bold{
+     font-weight: 500;
+ }
+ .container .left .upgrade .upbtn{
+     position:relative;
+     width: 100%;
+     height: 40px;
+     background: #fff;
+     border-radius: 10px;
+     overflow: hidden;
+ }
+ .container .left .upgrade .upbtn button{
+     position: absolute;
+     top: 0;
+     left: 0;
+     width: 100%;
+     height: 100%;
+     background: #fff;
+     outline: none;
+     border: none;
+     font-size: 1,2em;
+     color: #000;
+     font-weight: 500;
+     cursor: pointer;
+ }
+ .right {
     display: flex;
-}
-
-.left {
-    width: 250px;
-    background-color: #2c3e50;
-    color: white;
-    height: 100vh;
+    flex-direction: column;
     padding: 20px;
-}
-
-.left header .logo {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.left header .logo h2 {
-    margin: 0;
-}
-
-.left header .logo .close {
-    cursor: pointer;
-}
-
-.left nav ul {
-    list-style: none;
-    padding: 0;
-}
-
-.left nav ul li {
-    margin: 20px 0;
-}
-
-.left nav ul li a {
-    color: white;
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-}
-
-.left nav ul li a .material-symbols-outlined {
-    margin-right: 10px;
-}
-
-.left nav ul li.active a {
-    font-weight: bold;
-}
-
-.left .upgrade {
-    margin-top: 50px;
-    text-align: center;
-}
-
-.left .upgrade h4 {
-    margin: 0;
-}
-
-.left .upgrade .upbtn button {
-    background-color: #3498db;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-    margin-top: 10px;
-}
-
-.right {
-    flex: 1;
-    padding: 20px;
-}
-
-.naren h2 {
-    margin: 0;
-    padding: 20px;
-    background-color: #3498db;
-    color: white;
 }
 
 .search-filter {
     display: flex;
-    justify-content: space-between;
+    gap: 10px;
     margin-bottom: 20px;
 }
 
-.search-filter input {
-    padding: 10px;
-    width: 70%;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
-.search-filter select {
-    padding: 10px;
-    width: 25%;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
-.tasklist ul {
+#task-list ul {
     list-style: none;
     padding: 0;
 }
 
-.tasklist ul li {
-    background-color: white;
-    padding: 15px;
-    margin-bottom: 10px;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+#task-list ul li {
+    margin: 10px 0;
 }
 
-.tasklist ul li strong {
-    display: block;
-    margin-bottom: 5px;
+#task-list ul li span {
+    margin-left: 10px;
 }
 
-.tasklist ul li button {
-    margin-right: 10px;
-    padding: 5px 10px;
-    border: none;
-    border-radius: 3px;
-    cursor: pointer;
+button {
+    padding: 10px;
+    margin-top: 10px;
 }
 
-.tasklist ul li button.edit-btn {
-    background-color: #3498db;
-    color: white;
-}
-
-.tasklist ul li button.delete-btn {
-    background-color: #e74c3c;
-    color: white;
-}
-
-.taskdetails {
-    margin-top: 20px;
-}
-
-.taskdetails form {
-    background-color: white;
+#task-details {
     padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border: 1px solid #ddd;
+    border-radius: 8px;
 }
 
-.taskdetails form label {
+form label {
     display: block;
-    margin-bottom: 5px;
+    margin-top: 10px;
 }
 
-.taskdetails form input,
-.taskdetails form textarea,
-.taskdetails form select {
+form input, form select {
     width: 100%;
     padding: 10px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
-.taskdetails form button {
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-right: 10px;
-}
-
-.taskdetails form button[type="submit"] {
-    background-color: #3498db;
-    color: white;
-}
-
-.taskdetails form button[type="button"] {
-    background-color: #e74c3c;
-    color: white;
+    margin-top: 5px;
 }
