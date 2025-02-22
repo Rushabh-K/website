@@ -881,6 +881,7 @@
           grid-column: 3 / 4;
           padding: 20px;
           gap: 10px;
+          z-index: -1;
      }
      .container .right main .calendar .calendarHead{
          position: relative;
@@ -1135,60 +1136,50 @@
           }
      } 
      /* Profile Container */
-.profile-container {
-    position: relative;
-    display: inline-block;
-}
-
-/* Profile Icon */
-.profile-icon {
-    cursor: pointer;
-    font-size: 20px;
-    padding: 10px;
-    background: #007bff;
-    color: white;
-    border-radius: 50%;
-    text-align: center;
-    display: inline-block;
-}
-
-/* Dropdown Menu - Initially Hidden */
-.dropdown-menu {
-    display: none;
-    position: absolute;
-    right: 0;
-    top: 40px;
-    background: white;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    min-width: 150px;
-    z-index: 1000;
-}
-
-/* Dropdown Items */
-.dropdown-menu ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.dropdown-menu ul li {
-    padding: 10px;
-    border-bottom: 1px solid #ddd;
-}
-
-.dropdown-menu ul li:last-child {
-    border-bottom: none;
-}
-
-.dropdown-menu ul li a {
-    text-decoration: none;
-    color: black;
-    display: block;
-}
-
-/* Show Dropdown */
-.dropdown-menu.show {
-    display: block;
-}
+     .dropdown-menu {
+        position: absolute;
+        top: 60px;
+        right: 0;
+        width: 200px;
+        background: white;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+        display: none;
+        flex-direction: column;
+        z-index: 9999; /* Ensure it's above everything */
+    }
+    .profile-container {
+        position: relative;
+        z-index: 9998; /* Just below the dropdown */
+    }
+    .profile-btn {
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        background: white;
+        padding: 10px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    .profile-btn img {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        margin-right: 10px;
+    }
+    .dropdown-menu.active {
+        display: flex;
+    }
+    .dropdown-menu a {
+        text-decoration: none;
+        color: black;
+        padding: 10px;
+        display: flex;
+        align-items: center;
+    }
+    .dropdown-menu a:hover {
+        background: #f0f0f0;
+    }
+    .dropdown-menu i {
+        margin-right: 10px;
+    }
