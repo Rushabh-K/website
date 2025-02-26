@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Billing Page</title>
+    <link rel="stylesheet" href="/stylesheet/website/billing.css" />
+    <link rel="stylesheet" href="/stylesheet/website/Dashboard.css">
+    
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+      rel="stylesheet"
+    />
+    <style>
+      .dropdown-menu {
+        position: absolute;
+        top: 60px;
+        right: 0;
+        width: 200px;
+        background: white;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+        display: none;
+        flex-direction: column;
+        z-index: 9999; /* Ensure it's above everything */
+    }
+    .profile-container {
+        position: relative;
+        z-index: 9998; /* Just below the dropdown */
+    }
+    .profile-btn {
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        background: white;
+        padding: 10px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    .profile-btn img {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        margin-right: 10px;
+    }
+    .dropdown-menu {
+        position: absolute;
+        top: 60px;
+        right: 0;
+        width: 200px;
+        background: white;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+        display: none;
+        flex-direction: column;
+            position: absolute;
+            z-index: 9999 !important;        
+    }
+    .dropdown-menu.active {
+        display: flex;
+    }
+    .dropdown-menu a {
+        text-decoration: none;
+        color: black;
+        padding: 10px;
+        display: flex;
+        align-items: center;
+    }
+    .dropdown-menu a:hover {
+        background: #f0f0f0;
+    }
+    .dropdown-menu i {
+        margin-right: 10px;
+    }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+        <div class="left">
+            <header>
+                <div class="logo">
+                    <h2>Asep Group</h2>
+                    <div class="close">
+                        <span class="material-symbols-outlined">
+                            close
+                        </span>
+                    </div>
+                </div>
+                <nav>
+                    <ul>
+                        <li>
+                            <a href="/efficientHours">
+                                <span class="material-symbols-outlined full">
+                                    dashboard
+                                </span>
+                                <span class="title">Dashboard</tspan>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/efficientHours/project">
+                                <span class="material-symbols-outlined ">
+                                check_box
+                                </span>
+                                <span class="title">Project</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/efficientHours/pomodoro">
+                                <span class="material-symbols-outlined ">
+                                  Group
+                                </span>
+                                <span class="title">Pomodoro</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/efficientHours/myTask">
+                                <span class="material-symbols-outlined ">
+                                task
+                                </span>
+                                <span class="title">My Task</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/efficientHours/messages">
+                                <span class="material-symbols-outlined ">
+                            chat_bubble
+                                </span>
+                                <span class="title">Message</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/efficientHours/billing">
+                                <span class="material-symbols-outlined ">
+                                account_balance_wallet
+                                </span>
+                                <span class="title">My Billing</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </header>
+            <div class="upgrade">
+                <h4>UPgrade to<bold>PRO</bold> for<br> more features</h4>
+                <div class="upbtn">
+                    <button>Upgrade</button>
+                </div>
+            </div>
+        </div>
+
+      <div class="right">
+        <div class="top">
+          <div class="searchBx">
+              <h2>Billings</h2>
+          </div>
+          <div class="user">
+              <span class="material-symbols-outlined ">
+                  notifications
+              </span>
+              <div class="toggle">
+                  <span class="material-symbols-outlined ">
+                    menu
+                  </span>
+                  <span class="material-symbols-outlined ">
+                    close
+                  </span>
+              </div>
+              <div class="profile-container">
+                  <div class="profile-btn" onclick="toggleMenu()">
+                    <img src="/images/DashBoard Images/WhatsApp Image 2025-01-18 at 17.54.56_35de9f9c.jpg" alt="Profile Picture">
+                      <span>EfficientHours</span>
+                  </div>
+                  <div class="dropdown-menu" id="dropdownMenu">
+                      <a href="#"><i class="fas fa-user"></i>Edit Profile</a>
+                      <a href="#"><i class="fas fa-cog"></i><strong>Settings & Privacy</strong></a>
+                      <a href="#"><i class="fas fa-question-circle"></i>Help & Support</a>
+                      <a href="#"><i class="fas fa-sign-out-alt"></i>Logout</a>
+                  </div>
+              </div>
+          </div>
+
+      </div>
+        <main>
+          <div class="billing-container">
+            <div class="billing-summary">
+              <div>
+                <h3>Total Balance</h3>
+                <span>$1250.00</span>
+              </div>
+              <div>
+                <h3>Last Payment</h3>
+                <span>$200.00 on 15th January</span>
+              </div>
+            </div>
+            <div class="transaction-history">
+              <h4>Transaction History</h4>
+              <ul class="transaction-list">
+                <li>
+                  <span>Payment for Services</span>
+                  <span>$150.00</span>
+                </li>
+                <li>
+                  <span>Subscription Charge</span>
+                  <span>$50.00</span>
+                </li>
+                <li>
+                  <span>Refund for Overcharge</span>
+                  <span>-$20.00</span>
+                </li>
+              </ul>
+            </div>
+            <div class="payment-methods">
+              <h4>Payment Methods</h4>
+              <div class="payment-method-list">
+                <div>
+                  <span>Visa **** 1234</span>
+                  <span>Expires: 12/25</span>
+                </div>
+                <div>
+                  <span>MasterCard **** 5678</span>
+                  <span>Expires: 08/24</span>
+                </div>
+              </div>
+            </div>
+            <div class="update-payment-btn">
+              <button>Update Payment Methods</button>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+  </body>
+</html>

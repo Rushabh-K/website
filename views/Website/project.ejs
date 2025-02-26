@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Billing Page</title>
+    <link rel="stylesheet" href="/stylesheet/website/project.css" />
+    <link rel="stylesheet" href="/stylesheet/website/Dashboard.css">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="container">
+        <div class="left">
+            <header>
+                <div class="logo">
+                    <h2>Asep Group</h2>
+                    <div class="close">
+                        <span class="material-symbols-outlined">
+                            close
+                        </span>
+                    </div>
+                </div>
+                <nav>
+                    <ul>
+                        <li>
+                            <a href="/efficientHours">
+                                <span class="material-symbols-outlined full">
+                                    dashboard
+                                </span>
+                                <span class="title">Dashboard</tspan>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/efficientHours/project">
+                                <span class="material-symbols-outlined ">
+                                check_box
+                                </span>
+                                <span class="title">Project</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/efficientHours/pomodoro">
+                                <span class="material-symbols-outlined ">
+                                  Group
+                                </span>
+                                <span class="title">Pomodoro</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/efficientHours/myTask">
+                                <span class="material-symbols-outlined ">
+                                task
+                                </span>
+                                <span class="title">My Task</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/efficientHours/messages">
+                                <span class="material-symbols-outlined ">
+                            chat_bubble
+                                </span>
+                                <span class="title">Message</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/efficientHours/billing">
+                                <span class="material-symbols-outlined ">
+                                account_balance_wallet
+                                </span>
+                                <span class="title">My Billing</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </header>
+            <div class="upgrade">
+                <h4>UPgrade to<bold>PRO</bold> for<br> more features</h4>
+                <div class="upbtn">
+                    <button>Upgrade</button>
+                </div>
+            </div>
+        </div>
+       
+       <div class="right">
+        <div class="top">
+            <div class="searchBx">
+                <h2>Project</h2>
+            </div>
+            <div class="user">
+                <span class="material-symbols-outlined ">
+                    notifications
+                </span>
+                <div class="toggle">
+                    <span class="material-symbols-outlined ">
+                      menu
+                    </span>
+                    <span class="material-symbols-outlined ">
+                      close
+                    </span>
+                </div>
+                <div class="profile-container">
+                    <div class="profile-btn" onclick="toggleMenu()">
+                      <img src="/images/DashBoard Images/WhatsApp Image 2025-01-18 at 17.54.56_35de9f9c.jpg" alt="Profile Picture">
+                        <span>EfficientHours</span>
+                    </div>
+                    <div class="dropdown-menu" id="dropdownMenu">
+                        <a href="#"><i class="fas fa-user"></i>Edit Profile</a>
+                        <a href="#"><i class="fas fa-cog"></i><strong>Settings & Privacy</strong></a>
+                        <a href="#"><i class="fas fa-question-circle"></i>Help & Support</a>
+                        <a href="#"><i class="fas fa-sign-out-alt"></i>Logout</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="right">
+          <div class="search-filter">
+            <input type="text" id="search" placeholder="Search projects..." />
+            <select id="filter">
+              <option value="all">All</option>
+              <option value="low">Low Priority</option>
+              <option value="medium">Medium Priority</option>
+              <option value="high">High Priority</option>
+            </select>
+          </div>
+          <div class="projectlist">
+            <section id="project-list">
+              <ul id="projects"></ul>
+              <button id="add-project">Add New Project</button>
+            </section>
+          </div>
+          <div class="projectdetails">
+            <section id="project-details" style="display: none">
+              <h2>Project Details</h2>
+              <form id="project-form">
+                <label for="project-name">Project Name:</label>
+                <input
+                  type="text"
+                  id="project-name"
+                  name="project-name"
+                  required
+                />
+                <label for="company-name">Company Name:</label>
+                <input
+                  type="text"
+                  id="company-name"
+                  name="company-name"
+                  required
+                />
+                <label for="priority">Priority:</label>
+                <select id="priority" name="priority">
+                  <option value="low">Low</option>
+                  <option value="medium">Medium</option>
+                  <option value="high">High</option>
+                </select>
+                <label for="due-date">Due Date:</label>
+                <input type="date" id="due-date" name="due-date" required />
+                <label for="project-file">Attach File:</label>
+                <input type="file" id="project-file" name="project-file" />
+                <button type="submit">Save Project</button>
+                <button type="button" id="cancel-project">Cancel</button>
+              </form>
+            </section>
+          </div>
+        </div>
+       </div>
+      <div class="naren"></div>
+      
+    </div>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const projectsList = document.getElementById("projects");
+        const addProjectButton = document.getElementById("add-project");
+        const projectDetailsSection =
+          document.getElementById("project-details");
+        const projectForm = document.getElementById("project-form");
+        const cancelProjectButton = document.getElementById("cancel-project");
+        const searchInput = document.getElementById("search");
+        const filterSelect = document.getElementById("filter");
+        let projects = JSON.parse(localStorage.getItem("projects")) || [];
+
+        function renderProjects(filteredProjects = projects) {
+          projectsList.innerHTML = "";
+          filteredProjects.forEach((project) => {
+            const li = document.createElement("li");
+            li.className = "project-card";
+            li.draggable = true;
+            li.innerHTML = `
+                        <strong>${project.name}</strong> (${
+              project.company
+            })<br>
+                        Priority: ${project.priority}<br>
+                        Due Date: ${project.dueDate}<br>
+                        ${
+                          project.file
+                            ? `<a href="${project.file}" download>Download File</a>`
+                            : ""
+                        }
+                        <button class="edit-btn" data-id="${
+                          project.id
+                        }">Edit</button>
+                        <button class="delete-btn" data-id="${
+                          project.id
+                        }">Delete</button>
+                    `;
+            projectsList.appendChild(li);
+          });
+          document.querySelectorAll(".delete-btn").forEach((button) => {
+            button.addEventListener("click", function () {
+              projects = projects.filter(
+                (p) => p.id !== parseInt(this.dataset.id)
+              );
+              saveProjectsToLocalStorage();
+              renderProjects();
+            });
+          });
+          document.querySelectorAll(".edit-btn").forEach((button) => {
+            button.addEventListener("click", function () {
+              const project = projects.find(
+                (p) => p.id === parseInt(this.dataset.id)
+              );
+              if (project) {
+                document.getElementById("project-name").value = project.name;
+                document.getElementById("company-name").value = project.company;
+                document.getElementById("priority").value = project.priority;
+                document.getElementById("due-date").value = project.dueDate;
+                projectDetailsSection.style.display = "block";
+                projectForm.onsubmit = function (event) {
+                  event.preventDefault();
+                  project.name = document.getElementById("project-name").value;
+                  project.company =
+                    document.getElementById("company-name").value;
+                  project.priority = document.getElementById("priority").value;
+                  project.dueDate = document.getElementById("due-date").value;
+                  saveProjectsToLocalStorage();
+                  renderProjects();
+                  projectDetailsSection.style.display = "none";
+                  projectForm.reset();
+                };
+              }
+            });
+          });
+          document.querySelectorAll(".project-card").forEach((card) => {
+            card.addEventListener("dragstart", function (event) {
+              event.dataTransfer.setData("text/plain", event.target.dataset.id);
+            });
+            card.addEventListener("dragover", function (event) {
+              event.preventDefault();
+            });
+            card.addEventListener("drop", function (event) {
+              event.preventDefault();
+              const draggedId = event.dataTransfer.getData("text/plain");
+              const draggedElement = document.querySelector(
+                `[data-id="${draggedId}"]`
+              );
+              const targetElement = event.target.closest(".project-card");
+              if (
+                draggedElement &&
+                targetElement &&
+                draggedElement !== targetElement
+              ) {
+                const draggedIndex = projects.findIndex(
+                  (p) => p.id === parseInt(draggedId)
+                );
+                const targetIndex = projects.findIndex(
+                  (p) => p.id === parseInt(targetElement.dataset.id)
+                );
+                [projects[draggedIndex], projects[targetIndex]] = [
+                  projects[targetIndex],
+                  projects[draggedIndex],
+                ];
+                saveProjectsToLocalStorage();
+                renderProjects();
+              }
+            });
+          });
+        }
+
+        function saveProjectsToLocalStorage() {
+          localStorage.setItem("projects", JSON.stringify(projects));
+        }
+
+        addProjectButton.addEventListener(
+          "click",
+          () => (projectDetailsSection.style.display = "block")
+        );
+        cancelProjectButton.addEventListener(
+          "click",
+          () => (projectDetailsSection.style.display = "none")
+        );
+
+        projectForm.addEventListener("submit", function (event) {
+          event.preventDefault();
+          const fileInput = document.getElementById("project-file");
+          const file = fileInput.files[0];
+          let fileUrl = "";
+          if (file) {
+            const reader = new FileReader();
+            reader.onload = function (e) {
+              fileUrl = e.target.result;
+              saveProject(fileUrl);
+            };
+            reader.readAsDataURL(file);
+          } else {
+            saveProject(fileUrl);
+          }
+        });
+
+        function saveProject(fileUrl) {
+          const project = {
+            id: Date.now(),
+            name: document.getElementById("project-name").value,
+            company: document.getElementById("company-name").value,
+            priority: document.getElementById("priority").value,
+            dueDate: document.getElementById("due-date").value,
+            file: fileUrl,
+          };
+          projects.push(project);
+          saveProjectsToLocalStorage();
+          renderProjects();
+          projectDetailsSection.style.display = "none";
+          projectForm.reset();
+          checkDeadlines();
+        }
+
+        function checkDeadlines() {
+          const today = new Date().toISOString().split("T")[0];
+          projects.forEach((project) => {
+            if (project.dueDate === today) {
+              alert(`Reminder: Your project "${project.name}" is due today!`);
+            }
+          });
+        }
+
+        searchInput.addEventListener("input", function () {
+          const searchTerm = this.value.toLowerCase();
+          const filteredProjects = projects.filter(
+            (project) =>
+              project.name.toLowerCase().includes(searchTerm) ||
+              project.company.toLowerCase().includes(searchTerm)
+          );
+          renderProjects(filteredProjects);
+        });
+
+        filterSelect.addEventListener("change", function () {
+          const filterValue = this.value;
+          const filteredProjects =
+            filterValue === "all"
+              ? projects
+              : projects.filter((project) => project.priority === filterValue);
+          renderProjects(filteredProjects);
+        });
+
+        renderProjects();
+        checkDeadlines();
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Billing Page</title>
+    <link rel="stylesheet" href="/stylesheet/website/mytaks.css">
+    <link rel="stylesheet" href="/stylesheet/website/Dashboard.css">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+    <style>
+        .dropdown-menu {
+        position: absolute;
+        top: 60px;
+        right: 0;
+        width: 200px;
+        background: white;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+        display: none;
+        flex-direction: column;
+        z-index: 9999; /* Ensure it's above everything */
+    }
+    .profile-container {
+        position: relative;
+        z-index: 9998; /* Just below the dropdown */
+    }
+    .profile-btn {
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        background: white;
+        padding: 10px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    .profile-btn img {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        margin-right: 10px;
+    }
+    /* .dropdown-menu {
+        position: absolute;
+        top: 60px;
+        right: 0;
+        width: 200px;
+        background: white;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+        display: none;
+        flex-direction: column;
+            position: absolute;
+            z-index: 9999 !important;        
+    } */
+    .dropdown-menu.active {
+        display: flex;
+    }
+    .dropdown-menu a {
+        text-decoration: none;
+        color: black;
+        padding: 10px;
+        display: flex;
+        align-items: center;
+    }
+    .dropdown-menu a:hover {
+        background: #f0f0f0;
+    }
+    .dropdown-menu i {
+        margin-right: 10px;
+    }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="left">
+            <header>
+                <div class="logo">
+                    <h2>Asep Group</h2>
+                    <div class="close">
+                        <span class="material-symbols-outlined">
+                            close
+                        </span>
+                    </div>
+                </div>
+                <nav>
+                    <ul>
+                        <li>
+                            <a href="/efficientHours">
+                                <span class="material-symbols-outlined ">
+                                    dashboard
+                                </span>
+                                <span class="title">Dashboard</tspan>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/efficientHours/project">
+                                <span class="material-symbols-outlined ">
+                                check_box
+                                </span>
+                                <span class="title">Project</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/efficientHours/pomodoro">
+                                <span class="material-symbols-outlined ">
+                                  Group
+                                </span>
+                                <span class="title">Pomodoro</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/efficientHours/myTask">
+                                <span class="material-symbols-outlined  full">
+                                task
+                                </span>
+                                <span class="title">My Task</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/efficientHours/messages">
+                                <span class="material-symbols-outlined ">
+                            chat_bubble
+                                </span>
+                                <span class="title">Message</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/efficientHours/billing">
+                                <span class="material-symbols-outlined ">
+                                account_balance_wallet
+                                </span>
+                                <span class="title">My Billing</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </header>
+            <div class="upgrade">
+                <h4>UPgrade to<bold>PRO</bold> for<br> more features</h4>
+                <div class="upbtn">
+                    <button>Upgrade</button>
+                </div>
+            </div>
+        </div>
+        <div class="right">
+            <div class="top">
+                <div class="searchBx">
+                    <h2>My Tasks</h2>
+                </div>
+                <div class="user">
+                    <span class="material-symbols-outlined ">
+                        notifications
+                    </span>
+                    <div class="toggle">
+                        <span class="material-symbols-outlined ">
+                          menu
+                        </span>
+                        <span class="material-symbols-outlined ">
+                          close
+                        </span>
+                    </div>
+                    <div class="profile-container">
+                        <div class="profile-btn" onclick="toggleMenu()">
+                            <img src="/images/DashBoard Images/WhatsApp Image 2025-01-18 at 17.54.56_35de9f9c.jpg" alt="Profile Picture">
+                            <span>EfficientHours</span>
+                        </div>
+                        <div class="dropdown-menu" id="dropdownMenu">
+                            <a href="#"><i class="fas fa-user"></i>Edit Profile</a>
+                            <a href="#"><i class="fas fa-cog"></i><strong>Settings & Privacy</strong></a>
+                            <a href="#"><i class="fas fa-question-circle"></i>Help & Support</a>
+                            <a href="#"><i class="fas fa-sign-out-alt"></i>Logout</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="right">
+                <div class="search-filter">
+                    <input type="text" id="search" placeholder="Search tasks...">
+                    <select id="filter">
+                        <option value="all">All</option>
+                        <option value="low">Low Priority</option>
+                        <option value="medium">Medium Priority</option>
+                        <option value="high">High Priority</option>
+                    </select>
+                </div>
+                <div class="tasklist">
+                    <section id="task-list">
+                        <ul id="tasks"></ul>
+                        <button id="add-task">Add New Task</button>
+                    </section>
+                </div>
+                <div class="taskdetails">
+                    <section id="task-details" style="display: none;">
+                        <h2>Task Details</h2>
+                        <form id="task-form">
+                            <label for="task-name">Task Name:</label>
+                            <input type="text" id="task-name" name="task-name" required>
+                            <label for="priority">Priority:</label>
+                            <select id="priority" name="priority">
+                                <option value="low">Low</option>
+                                <option value="medium">Medium</option>
+                                <option value="high">High</option>
+                            </select>
+                            <label for="due-date">Due Date:</label>
+                            <input type="date" id="due-date" name="due-date" required>
+                            <label for="task-progress">Progress:</label>
+                            <input type="number" id="task-progress" name="task-progress" min="0" max="100" required>
+                            <button type="submit">Save Task</button>
+                            <button type="button" id="cancel-task">Cancel</button>
+                        </form>
+                    </section>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+    <script>
+        let tasks = [];
+const taskList = document.getElementById('tasks');
+const taskForm = document.getElementById('task-form');
+const taskDetails = document.getElementById('task-details');
+const addTaskBtn = document.getElementById('add-task');
+const cancelTaskBtn = document.getElementById('cancel-task');
+const taskNameInput = document.getElementById('task-name');
+const priorityInput = document.getElementById('priority');
+const dueDateInput = document.getElementById('due-date');
+const progressInput = document.getElementById('task-progress');
+const searchInput = document.getElementById('search');
+const filterSelect = document.getElementById('filter');
+
+addTaskBtn.addEventListener('click', () => {
+    taskDetails.style.display = 'block';
+});
+
+cancelTaskBtn.addEventListener('click', () => {
+    taskDetails.style.display = 'none';
+});
+
+taskForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const task = {
+        name: taskNameInput.value,
+        priority: priorityInput.value,
+        dueDate: dueDateInput.value,
+        progress: progressInput.value,
+    };
+
+    tasks.push(task);
+    renderTasks();
+    taskDetails.style.display = 'none';
+    taskForm.reset();
+});
+
+function renderTasks() {
+    taskList.innerHTML = '';
+    tasks.forEach((task, index) => {
+        const taskItem = document.createElement('li');
+        taskItem.innerHTML = `
+            <span>${task.name}</span>
+            <span>Priority: ${task.priority}</span>
+            <span>Due Date: ${task.dueDate}</span>
+            <span>Progress: ${task.progress}%</span>
+        `;
+        taskList.appendChild(taskItem);
+    });
+}
+
+searchInput.addEventListener('input', filterTasks);
+filterSelect.addEventListener('change', filterTasks);
+
+function filterTasks() {
+    const query = searchInput.value.toLowerCase();
+    const filter = filterSelect.value;
+
+    const filteredTasks = tasks.filter((task) => {
+        const matchesQuery = task.name.toLowerCase().includes(query);
+        const matchesFilter = filter === 'all' || task.priority === filter;
+        return matchesQuery && matchesFilter;
+    });
+
+    taskList.innerHTML = '';
+    filteredTasks.forEach((task, index) => {
+        const taskItem = document.createElement('li');
+        taskItem.innerHTML = `
+            <span>${task.name}</span>
+            <span>Priority: ${task.priority}</span>
+            <span>Due Date: ${task.dueDate}</span>
+            <span>Progress: ${task.progress}%</span>
+        `;
+        taskList.appendChild(taskItem);
+    });
+}
+
+    </script>
+</body>
+</html>

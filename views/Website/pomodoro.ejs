@@ -7,7 +7,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pomodoro Timer</title>
-    <link rel="stylesheet" href="pomodoro.css">
+    <link rel="stylesheet" href="/stylesheet/website/pomodoro.css">
+    <link rel="stylesheet" href="/stylesheet/website/Dashboard.css">
     <style>
       
       .sidebar {
@@ -169,7 +170,7 @@
                     <nav>
                         <ul>
                             <li>
-                                <a href="#">
+                                <a href="/efficientHours">
                                     <span class="material-symbols-outlined full">
                                         dashboard
                                     </span>
@@ -177,7 +178,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="#">
+                                <a href="/efficientHours/project">
                                     <span class="material-symbols-outlined ">
                                     check_box
                                     </span>
@@ -185,15 +186,15 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="#">
+                                <a href="/efficientHours/pomodoro">
                                     <span class="material-symbols-outlined ">
-                                      timer
+                                      Group
                                     </span>
                                     <span class="title">Pomodoro</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="#">
+                                <a href="/efficientHours/myTask">
                                     <span class="material-symbols-outlined ">
                                     task
                                     </span>
@@ -201,7 +202,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="#">
+                                <a href="/efficientHours/messages">
                                     <span class="material-symbols-outlined ">
                                 chat_bubble
                                     </span>
@@ -209,7 +210,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="http://127.0.0.1:5502/billings.html">
+                                <a href="/efficientHours/billing">
                                     <span class="material-symbols-outlined ">
                                     account_balance_wallet
                                     </span>
@@ -228,6 +229,38 @@
             </div>
      <main>
             <div class="right">
+                <div class="top" style="width:230%;">
+                    <div class="searchBx">
+                        <h2>Pomodoro</h2>
+                    </div>
+                    <div class="user">
+                        <span class="material-symbols-outlined ">
+                            notifications
+                        </span>
+                        <div class="toggle">
+                            <span class="material-symbols-outlined ">
+                              menu
+                            </span>
+                            <span class="material-symbols-outlined ">
+                              close
+                            </span>
+                        </div>
+                        <div class="profile-container">
+                            <div class="profile-btn" onclick="toggleMenu()">
+                                <img src="/images/DashBoard Images/WhatsApp Image 2025-01-18 at 17.54.56_35de9f9c.jpg" alt="Profile Picture">
+                                <span>EfficientHours</span>
+                            </div>
+                            <div class="dropdown-menu" id="dropdownMenu">
+                                <a href="#"><i class="fas fa-user"></i>Edit Profile</a>
+                                <a href="#"><i class="fas fa-cog"></i><strong>Settings & Privacy</strong></a>
+                                <a href="#"><i class="fas fa-question-circle"></i>Help & Support</a>
+                                <a href="#"><i class="fas fa-sign-out-alt"></i>Logout</a>
+                            </div>
+                        </div>
+                    </div>
+    
+                </div>
+
                 <div class="pomodoro-container">
                     <div class="tabs">
                         <button class="active" onclick="setTimer(1500, this)">Pomodoro</button>
@@ -242,7 +275,10 @@
                         <ul class="task-list"></ul>
                     </div>
                 </div>
+
             </div>
+                
+           
         </main>
         </div>
 
