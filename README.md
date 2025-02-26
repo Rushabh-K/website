@@ -7,7 +7,8 @@ lowers stress, and leads to career success.
 
 # Requirement to run the Project
 
-Node js
+Node js <br>
+MongoDB
 
 # Here is how to setup your project
 
@@ -29,3 +30,5 @@ step 3: Run the local host
 ```
 npm start
 ```
+
+Setup up database in MongoDb for user authentication and to save data of the user to test the website
