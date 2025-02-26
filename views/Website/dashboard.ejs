@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Index page</title>
+     <link rel="stylesheet" href="Dashboard.css">   
+     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+
+     <style>
+        /* fallback */
+@font-face {
+  font-family: 'Material Icons Outlined';
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://fonts.gstatic.com/s/materialiconsoutlined/v109/gok-H7zzDkdnRel8-DQ6KAXJ69wP1tGnf4ZGhUce.woff2) format('woff2');
+}
+
+.material-icons-outlined {
+  font-family: 'Material Icons Outlined';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-feature-settings: 'liga';
+  -webkit-font-smoothing: antialiased;
+}
+     </style>
+    </head>
+<body>
+    <div class="container">
+        <div class="left">
+            <header>
+                <div class="logo">
+                    <h2>Asep Group</h2>
+                    <div class="close">
+                        <span class="material-symbols-outlined">
+                            close
+                        </span>
+                    </div>
+                </div>
+                <nav>
+                    <ul>
+                        <li>
+                            <a href="#">
+                                <span class="material-symbols-outlined full">
+                                    dashboard
+                                </span>
+                                <span class="title">Dashboard</tspan>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span class="material-symbols-outlined ">
+                                check_box
+                                </span>
+                                <span class="title">Project</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span class="material-symbols-outlined ">
+                                  Group
+                                </span>
+                                <span class="title">My Client</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span class="material-symbols-outlined ">
+                                task
+                                </span>
+                                <span class="title">My Task</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span class="material-symbols-outlined ">
+                            chat_bubble
+                                </span>
+                                <span class="title">Message</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span class="material-symbols-outlined ">
+                                account_balance_wallet
+                                </span>
+                                <span class="title">My Billing</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </header>
+            <div class="upgrade">
+                <h4>UPgrade to<bold>PRO</bold> for<br> more features</h4>
+                <div class="upbtn">
+                    <button>Upgrade</button>
+                </div>
+            </div>
+        </div>
+        <div class="right">
+            <div class="top">
+                <div class="searchBx">
+                    <h2>Dashboard</h2>
+                    <div class="inputBx">
+                        <span class="material-symbols-outlined searchOpen">
+                            search
+                        </span>
+                        <input type="text" placeholder="Search...">
+                        <span class="material-symbols-outlined searchClose">
+                            close
+                        </span>
+
+                    </div>
+                </div>
+                <div class="user">
+                    <span class="material-symbols-outlined ">
+                        notifications
+                    </span>
+                    <div class="toggle">
+                        <span class="material-symbols-outlined ">
+                          menu
+                        </span>
+                        <span class="material-symbols-outlined ">
+                          close
+                        </span>
+                    </div>
+                    <div class="profile-container">
+                        <div class="profile-btn" onclick="toggleMenu()">
+                            <img src="" alt="Profile Picture">
+                            <span>EfficientHours</span>
+                        </div>
+                        <div class="dropdown-menu" id="dropdownMenu">
+                            <a href="#"><i class="fas fa-user"></i>Edit Profile</a>
+                            <a href="#"><i class="fas fa-cog"></i><strong>Settings & Privacy</strong></a>
+                            <a href="#"><i class="fas fa-question-circle"></i>Help & Support</a>
+                            <a href="#"><i class="fas fa-sign-out-alt"></i>Logout</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <main>
+            <div class="projectCard">
+                <div class="projectTop">
+                <h2>Project Name<br><span>Company Name</span></h2>
+                <div class="projectsDots">
+                    <span class="material-symbols-outlined ">
+                        more_horiz
+                      </span> 
+                </div>
+            </div>
+            <div class="projectProgress">
+                <div class="process">
+                    <h2>In Progress</h2>
+                </div>
+                <div class="priority">
+                    <h2>High Priority</h2>
+                </div>
+            </div>
+            <div class="groupImg">
+                <a href="#">
+                    <img src="./Displa/clock-time.png" alt="img1">
+                </a>
+                <a href="#" style="--left: -10px;">
+                    <img src="./Displa/clock-time.png" alt="img2">
+                </a>
+                <a href="#" style="--left: -20px;">
+                    <img src="./Displa/clock-time.png" alt="img3">
+
+                <a href="#" style="--left: -30px;">
+                    <img src="./Displa/clock-time.png" alt="img4">
+                </a>
+                <a href="#" style="--left: -40px;">
+                    <img src="./Displa/clock-time.png" alt="img5">
+                </a>
+                <a href="#" style="--left: -20px;">
+                    <span class="number">+3</span>
+                </a>
+            </div>
+            <div class="task">
+                <h2>Task Done: <bold>35</bold>/ 50</h2>
+                <span class="line"></span>
+            </div>
+            <div class="due">
+                <h2>Due Date: 07 February</h2>
+            </div>
+            </div>
+        
+          <!-- second project card -->
+
+
+            <div class="projectCard projectCard2">
+                <div class="projectTop">
+                <h2>Project Name<br><span>Company Name</span></h2>
+                <div class="projectsDots">
+                    <span class="material-symbols-outlined ">
+                        more_horiz
+                      </span> 
+                </div>
+            </div>
+            <div class="projectProgress">
+                <div class="process">
+                    <h2>In Progress</h2>
+                </div>
+                <div class="priority">
+                    <h2>High Priority</h2>
+                </div>
+            </div>
+            <div class="groupImg">
+               
+                <a href="#" style="--left: -10px;">
+                    <img src="./Displa/20250117_123842.jpg" alt="">
+                </a>
+                <a href="#" style="--left: -20px;">
+                    <img src="./Displa/20250117_123842.jpg" alt="img3">
+
+                <a href="#" style="--left: -30px;">
+                    <img src="./Displa/20250117_123842.jpg" alt="img4">
+                </a>
+                <a href="#" style="--left: -40px;">
+                    <img src="./Displa/20250117_123842.jpg" alt="img5">
+                </a>
+                <a href="#" style="--left: -20px;">
+                    <span class="number">+3</span>
+                </a>
+            </div>
+            <div class="task">
+                <h2>Task Done: <bold>35</bold>/ 50</h2>
+                <span class="line"></span>
+            </div>
+            <div class="due">
+                <h2>Due Date: 07 February</h2>
+            </div>
+            </div>
+
+            
+              <div class="myTasks">
+                <div class="tasksHead">
+                    <h2>MY Tasks</h2>
+                    <div class="tasksDots">
+                        <span class="material-symbols-outlined ">
+                            more_horiz
+                          </span> 
+                    </div>
+                </div>
+                <div class="tasks">
+                    <ul>
+                        <li>
+                            <span class="tasksIconName">
+                                <span class="tasksIcon done">
+                                    <span class="material-symbols-outlined ">
+                                        check
+                                      </span> 
+                                </span>
+                                <span class="tasksName">My Task 1</span>
+                            </span>
+                            <span class="tasksStar full">
+                                <span class="material-symbols-outlined ">
+                                   star
+                                  </span> 
+                            </span>
+                        </li>
+                        <li>
+                            <span class="tasksIconName">
+                                <span class="tasksIcon notDone">
+                                    
+                                </span>
+                                <span class="tasksName">My Task 2</span>
+                            </span>
+                            <span class="tasksStar half">
+                                <span class="material-symbols-outlined ">
+                                   star
+                                  </span> 
+                            </span>
+                        </li>
+                        <li>
+                            <span class="tasksIconName">
+                                <span class="tasksIcon notDone">
+                                    
+                                </span>
+                                <span class="tasksName">My Task 3</span>
+                            </span>
+                            <span class="tasksStar half">
+                                <span class="material-symbols-outlined ">
+                                   star
+                                  </span> 
+                            </span>
+                        </li>
+                        <li>
+                            <span class="tasksIconName">
+                                <span class="tasksIcon done">
+                                    <span class="material-symbols-outlined ">
+                                        check
+                                      </span> 
+                                </span>
+                                <span class="tasksName">My Task 4</span>
+                            </span>
+                            <span class="tasksStar half">
+                                <span class="material-symbols-outlined ">
+                                   star
+                                  </span> 
+                            </span>
+                        </li>
+                        <li>
+                            <span class="tasksIconName">
+                                <span class="tasksIcon done">
+                                    <span class="material-symbols-outlined ">
+                                        check
+                                      </span>  
+                                </span>
+                                <span class="tasksName tasksline">My Task 5</span>
+                            </span>
+                            <span class="tasksStar full">
+                                <span class="material-symbols-outlined ">
+                                   star
+                                  </span> 
+                            </span>
+                        </li>
+                        <li>
+                            <span class="tasksIconName">
+                                <span class="tasksIcon notDone"> 
+                                </span>
+                                <span class="tasksName ">My Task 6</span>
+                            </span>
+                            <span class="tasksStar full">
+                                <span class="material-symbols-outlined ">
+                                   star
+                                  </span> 
+                            </span>
+                        </li>
+                        <li>
+                            <span class="tasksIconName">
+                                <span class="tasksIcon notDone"> 
+                                </span>
+                                <span class="tasksName ">My Task 7</span>
+                            </span>
+                            <span class="tasksStar half">
+                                <span class="material-symbols-outlined ">
+                                   star
+                                  </span> 
+                            </span>
+                        </li>
+                    </ul>
+                </div>
+              </div>
+              <div class="timeline">
+                <div class="timelineHead">
+                    <h2>Time Line</h2>
+                    <div class="timelineDots">
+                        <span class="material-symbols-outlined ">
+                         more_horiz
+                           </span> 
+                    </div>
+                </div>
+                <div class="timelineVideos">
+                    <ul>
+                        <li>
+                            <span class="videoText">
+                                <span class="material-symbols-outlined full">
+                                    slideshow
+                                </span>
+                                <div class="text">Create wireframe</div>
+
+                            </span>
+                            <div class="timelineTime">
+                                32:54
+                            </div>
+                        </li>
+                        <li>
+                            <span class="videoText">
+                                <span class="material-symbols-outlined full">
+                                    slideshow
+                                </span>
+                                <div class="text">Logo Design</div>
+
+                            </span>
+                            <div class="timelineTime">
+                                30:00
+                            </div>
+                        </li>
+                        <li>
+                            <span class="videoText">
+                                <span class="material-symbols-outlined full">
+                                    slideshow
+                                </span>
+                                <div class="text">Dashboard Design </div>
+
+                            </span>
+                            <div class="timelineTime">
+                                30:00
+                            </div>
+                        </li>
+                        <li>
+                            <span class="videoText">
+                                <span class="material-symbols-outlined full">
+                                    slideshow
+                                </span>
+                                <div class="text">Landing Page </div>
+
+                            </span>
+                            <div class="timelineTime">
+                                30:00
+                            </div>
+                        </li>
+
+                    </ul>
+                </div>
+              </div>
+
+              <div class="calendar">
+                <div class="calendarHead">
+                    <h2 id="monthYear">February 2025</h2>
+                    <div class="calendarIcon">
+                        <span class="material-symbols-outlined" id="prevMonth">chevron_left</span>
+                        <span class="material-symbols-outlined" id="nextMonth">chevron_right</span>
+                    </div>
+                </div>
+                <div class="calendarDate">
+                    <ul class="weeks">
+                        <li>Sun</li>
+                        <li>Mon</li>
+                        <li>Tue</li>
+                        <li>Wed</li>
+                        <li>Thu</li>
+                        <li>Fri</li>
+                        <li>Sat</li>
+                    </ul>
+                    <ul class="days" id="calendarDays"></ul>
+                </div>
+            </div>
+              <div class="messages">
+                <div class="massagesHead">
+                    <h2>Messages</h2>
+                </div>
+                <div class="messageUser">
+                    <div class="messagesUserImg">
+                       <img src="./Displa/Narendra.jpg" alt="img1">
+                    </div>
+                    <h2>Narendra kavhat<br><span>Commodo Volutpot not</span></h2>
+                </div>
+                <div class="messageUser">
+                    <div class="messagesUserImg">
+                       <img src="./Displa/Narendra.jpg" alt="img1">
+                    </div>
+                    <h2>Rushabh Kalme<br><span>Commodo Volutpot not</span></h2>
+                </div>
+                <div class="messageUser">
+                    <div class="messagesUserImg">
+                       <img src="./Displa/Narendra.jpg" alt="img1">
+                    </div>
+                    <h2>Atharva Kale<br><span>Commodo Volutpot not</span></h2>
+                </div>
+                <div class="messageUser">
+                    <div class="messagesUserImg">
+                       <img src="./Displa/Narendra.jpg" alt="img1">
+                    </div>
+                    <h2>Rohan Katti<br><span>Commodo Volutpot not</span></h2>
+                </div>
+                <div class="messageUser">
+                    <div class="messagesUserImg">
+                       <img src="./Displa/Narendra.jpg" alt="img1">
+                    </div>
+                    <h2>Sahil Karmanrkar<br><span>Commodo Volutpot not</span></h2>
+                </div>
+              </div>
+            </main>
+
+        </div>
+    </div>
+    <script>
+
+        // Calendar functionality
+        const monthYear = document.getElementById('monthYear');
+        const calendarDays = document.getElementById('calendarDays');
+        const prevMonthButton = document.getElementById('prevMonth');
+        const nextMonthButton = document.getElementById('nextMonth');
+
+        let currentDate = new Date();
+        let currentMonth = currentDate.getMonth();
+        let currentYear = currentDate.getFullYear();
+
+        const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+
+        function renderCalendar(month, year) {
+            const firstDay = new Date(year, month, 1);
+            const lastDay = new Date(year, month + 1, 0);
+            const daysInMonth = lastDay.getDate();
+            const startingDay = firstDay.getDay();
+
+            monthYear.textContent = `${months[month]} ${year}`;
+            calendarDays.innerHTML = '';
+
+            // Fill in the days from the previous month
+            for (let i = 0; i < startingDay; i++) {
+                const li = document.createElement('li');
+                li.classList.add('inactive');
+                const prevMonthLastDay = new Date(year, month, 0).getDate();
+                li.textContent = prevMonthLastDay - startingDay + i + 1;
+                calendarDays.appendChild(li);
+            }
+
+            // Fill in the days of the current month
+            for (let i = 1; i <= daysInMonth; i++) {
+                const li = document.createElement('li');
+                if (i === currentDate.getDate() && month === currentDate.getMonth() && year === currentDate.getFullYear()) {
+                    li.classList.add('active');
+                }
+                li.textContent = i;
+                calendarDays.appendChild(li);
+            }
+
+            // Fill in the days from the next month
+            const totalCells = startingDay + daysInMonth;
+            const remainingCells = totalCells > 35 ? 42 - totalCells : 35 - totalCells;
+            for (let i = 1; i <= remainingCells; i++) {
+                const li = document.createElement('li');
+                li.classList.add('inactive');
+                li.textContent = i;
+                calendarDays.appendChild(li);
+            }
+        }
+
+        prevMonthButton.addEventListener('click', () => {
+            currentMonth--;
+            if (currentMonth < 0) {
+                currentMonth = 11;
+                currentYear--;
+            }
+            renderCalendar(currentMonth, currentYear);
+        });
+
+        nextMonthButton.addEventListener('click', () => {
+            currentMonth++;
+            if (currentMonth > 11) {
+                currentMonth = 0;
+                currentYear++;
+            }
+            renderCalendar(currentMonth, currentYear);
+        });
+
+        // Initial render
+        renderCalendar(currentMonth, currentYear);
+        let toggle = document.querySelector('.toggle');
+        let left = document.querySelector('.left');
+        let right = document.querySelector('.right');
+        let close = document.querySelector('.close');
+        let body = document.querySelector('.body');
+        let searchBx = document.querySelector('.searchBx');
+        let searchOpen = document.querySelector('.searchOpen');
+        let searchClose = document.querySelector('.searchClose');
+        toggle.addEventListener('click',() =>{
+            toggel.classList.toggle('active');
+            left.classList.toggle('active');
+            right.classList.toggle('overlay');
+             body.style.overflow = 'hidden';  
+        });
+        close.onclick = () =>{
+            toggle.classList.remove('active');
+            left.classList.remove('active');
+            right.classList.remove('overlay');
+        };
+        searchOpen.onclick = () =>{
+            searchBx.classList.add('active');
+        }
+        searchClose.onclick = () =>{
+   searchBx.classList.remove('active');
+        }
+        window.onclick =(e) =>{
+            if (e.target == right) {
+                toggle.classList.remove('active');
+                left.classList.remove('active');
+                right.classList.remove('overplay');
+                body.style.overflow = '';
+            }
+        };
+        document.addEventListener('DOMContentLoaded', function() {
+            const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+            const taskList = document.getElementById('taskList');
+
+            tasks.forEach(task => {
+                const li = document.createElement('li');
+                li.textContent = `${task.name} - Due: ${task.dueDate}, Priority: ${task.priority}, Assigned To: ${task.assignTo}`;
+                taskList.appendChild(li);
+            });
+        });
+
+
+        //dropdown js section
+        function toggleMenu() {
+            document.getElementById("dropdownMenu").classList.toggle("active");
+        }
+        document.addEventListener("click", function(event) {
+            var profileBtn = document.querySelector(".profile-btn");
+            var dropdown = document.getElementById("dropdownMenu");
+            if (!profileBtn.contains(event.target) && !dropdown.contains(event.target)) {
+                dropdown.classList.remove("active");
+            }
+        });
+    </script>
+</body>
+</html>
