@@ -1,76 +1,77 @@
-let tasks = [];
-const taskList = document.getElementById("tasks");
-const taskForm = document.getElementById("task-form");
-const taskDetails = document.getElementById("task-details");
-const addTaskBtn = document.getElementById("add-task");
-const cancelTaskBtn = document.getElementById("cancel-task");
-const taskNameInput = document.getElementById("task-name");
-const priorityInput = document.getElementById("priority");
-const dueDateInput = document.getElementById("due-date");
-const progressInput = document.getElementById("task-progress");
-const searchInput = document.getElementById("search");
-const filterSelect = document.getElementById("filter");
-
-addTaskBtn.addEventListener("click", () => {
-  taskDetails.style.display = "block";
-});
-
-cancelTaskBtn.addEventListener("click", () => {
-  taskDetails.style.display = "none";
-});
-
-taskForm.addEventListener("submit", (e) => {
-  e.preventDefault();
-
-  const task = {
-    name: taskNameInput.value,
-    priority: priorityInput.value,
-    dueDate: dueDateInput.value,
-    progress: progressInput.value,
+document.addEventListener("DOMContentLoaded", async () => {
+  const loadTasks = async () => {
+    try {
+      const response = await fetch("/efficientHours/tasks");
+      if (!response.ok) throw new Error("Failed to fetch tasks");
+      const tasks = await response.json();
+      renderTasks(tasks);
+    } catch (error) {
+      console.error("Error:", error);
+    }
   };
 
-  tasks.push(task);
-  renderTasks();
-  taskDetails.style.display = "none";
-  taskForm.reset();
+  const renderTasks = (tasks) => {
+    taskList.innerHTML = tasks
+      .map(
+        (task) => `
+        <li>
+            <span>${task.name}</span>
+            <span>Priority: ${task.priority}</span>
+            <span>Due: ${new Date(task.dueDate).toLocaleDateString()}</span>
+            <span>Progress: ${task.progress}%</span>
+            <button onclick="deleteTask('${task._id}')">Delete</button>
+        </li>
+    `
+      )
+      .join("");
+  };
+  taskForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const newTask = {
+      name: taskNameInput.value,
+      priority: priorityInput.value,
+      dueDate: dueDateInput.value,
+      progress: parseInt(progressInput.value),
+    };
+
+    try {
+      const response = await fetch("/efficientHours/tasks", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+        body: JSON.stringify(newTask),
+      });
+
+      if (!response.ok) throw new Error("Failed to save task");
+
+      taskForm.reset();
+      await loadTasks();
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  });
+
+  // Initial load
+  await loadTasks();
 });
 
-function renderTasks() {
-  taskList.innerHTML = "";
-  tasks.forEach((task, index) => {
-    const taskItem = document.createElement("li");
-    taskItem.innerHTML = `
-            <span>${task.name}</span>
-            <span>Priority: ${task.priority}</span>
-            <span>Due Date: ${task.dueDate}</span>
-            <span>Progress: ${task.progress}%</span>
-        `;
-    taskList.appendChild(taskItem);
-  });
-}
+// Add this function to BOTH pages' scripts
+async function deleteTask(taskId) {
+  try {
+    const response = await fetch(`/efficientHours/tasks/${taskId}`, {
+      method: "DELETE",
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+    });
 
-searchInput.addEventListener("input", filterTasks);
-filterSelect.addEventListener("change", filterTasks);
-
-function filterTasks() {
-  const query = searchInput.value.toLowerCase();
-  const filter = filterSelect.value;
-
-  const filteredTasks = tasks.filter((task) => {
-    const matchesQuery = task.name.toLowerCase().includes(query);
-    const matchesFilter = filter === "all" || task.priority === filter;
-    return matchesQuery && matchesFilter;
-  });
-
-  taskList.innerHTML = "";
-  filteredTasks.forEach((task, index) => {
-    const taskItem = document.createElement("li");
-    taskItem.innerHTML = `
-            <span>${task.name}</span>
-            <span>Priority: ${task.priority}</span>
-            <span>Due Date: ${task.dueDate}</span>
-            <span>Progress: ${task.progress}%</span>
-        `;
-    taskList.appendChild(taskItem);
-  });
+    if (!response.ok) throw new Error("Delete failed");
+    window.location.reload(); // Refresh the page to reflect changes
+  } catch (error) {
+    console.error("Delete error:", error);
+    alert("Failed to delete task");
+  }
 }

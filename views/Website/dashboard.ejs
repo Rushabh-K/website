@@ -244,102 +244,18 @@
                     </div>
                 </div>
                 <div class="tasks">
-                    <ul>
-                        <li>
-                            <span class="tasksIconName">
-                                <span class="tasksIcon done">
-                                    <span class="material-symbols-outlined ">
-                                        check
-                                      </span> 
-                                </span>
-                                <span class="tasksName">My Task 1</span>
-                            </span>
-                            <span class="tasksStar full">
-                                <span class="material-symbols-outlined ">
-                                   star
-                                  </span> 
-                            </span>
-                        </li>
-                        <li>
-                            <span class="tasksIconName">
-                                <span class="tasksIcon notDone">
-                                    
-                                </span>
-                                <span class="tasksName">My Task 2</span>
-                            </span>
-                            <span class="tasksStar half">
-                                <span class="material-symbols-outlined ">
-                                   star
-                                  </span> 
-                            </span>
-                        </li>
-                        <li>
-                            <span class="tasksIconName">
-                                <span class="tasksIcon notDone">
-                                    
-                                </span>
-                                <span class="tasksName">My Task 3</span>
-                            </span>
-                            <span class="tasksStar half">
-                                <span class="material-symbols-outlined ">
-                                   star
-                                  </span> 
-                            </span>
-                        </li>
-                        <li>
-                            <span class="tasksIconName">
-                                <span class="tasksIcon done">
-                                    <span class="material-symbols-outlined ">
-                                        check
-                                      </span> 
-                                </span>
-                                <span class="tasksName">My Task 4</span>
-                            </span>
-                            <span class="tasksStar half">
-                                <span class="material-symbols-outlined ">
-                                   star
-                                  </span> 
-                            </span>
-                        </li>
-                        <li>
-                            <span class="tasksIconName">
-                                <span class="tasksIcon done">
-                                    <span class="material-symbols-outlined ">
-                                        check
-                                      </span>  
-                                </span>
-                                <span class="tasksName tasksline">My Task 5</span>
-                            </span>
-                            <span class="tasksStar full">
-                                <span class="material-symbols-outlined ">
-                                   star
-                                  </span> 
-                            </span>
-                        </li>
-                        <li>
-                            <span class="tasksIconName">
-                                <span class="tasksIcon notDone"> 
-                                </span>
-                                <span class="tasksName ">My Task 6</span>
-                            </span>
-                            <span class="tasksStar full">
-                                <span class="material-symbols-outlined ">
-                                   star
-                                  </span> 
-                            </span>
-                        </li>
-                        <li>
-                            <span class="tasksIconName">
-                                <span class="tasksIcon notDone"> 
-                                </span>
-                                <span class="tasksName ">My Task 7</span>
-                            </span>
-                            <span class="tasksStar half">
-                                <span class="material-symbols-outlined ">
-                                   star
-                                  </span> 
-                            </span>
-                        </li>
+                    
+                    <ul id="tasks">
+                        <% tasks.forEach(task => { %>
+                            <li class="task-item" data-id="<%= task._id %>">
+                                <div class="task-info">
+                                    <span class="task-name"><h3><%= task.task %></h3></span>
+                                    <progress value="<%= task.progress %>" max="100"></progress>
+                                </div>
+                                <div class="task-actions">
+                                </div>
+                            </li>
+                        <% }); %>
                     </ul>
                 </div>
               </div>

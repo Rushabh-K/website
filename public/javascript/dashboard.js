@@ -141,3 +141,61 @@ document.addEventListener("click", function (event) {
     dropdown.classList.remove("active");
   }
 });
+
+// Add this in dashboard's script section
+document.addEventListener("DOMContentLoaded", async () => {
+  const loadDashboardTasks = async () => {
+    try {
+      const response = await fetch("/efficientHours/tasks");
+      const tasks = await response.json();
+
+      const taskList = document.querySelector(".tasks ul");
+      taskList.innerHTML = tasks
+        .map(
+          (task) => `
+              <li>
+                  <span class="tasksIconName">
+                      <span class="tasksIcon ${
+                        task.progress === 100 ? "done" : "notDone"
+                      }">
+                          ${
+                            task.progress === 100
+                              ? '<span class="material-symbols-outlined">check</span>'
+                              : ""
+                          }
+                      </span>
+                      <span class="tasksName">${task.name}</span>
+                  </span>
+                  <span class="tasksStar full" onclick="deleteTask('${
+                    task._id
+                  }')">
+                      <span class="material-symbols-outlined">delete</span>
+                  </span>
+              </li>
+          `
+        )
+        .join("");
+    } catch (error) {
+      console.error("Error loading tasks:", error);
+    }
+  };
+  await loadDashboardTasks();
+});
+
+// Add this function to BOTH pages' scripts
+async function deleteTask(taskId) {
+  try {
+    const response = await fetch(`/efficientHours/tasks/${taskId}`, {
+      method: "DELETE",
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+    });
+
+    if (!response.ok) throw new Error("Delete failed");
+    window.location.reload(); // Refresh the page to reflect changes
+  } catch (error) {
+    console.error("Delete error:", error);
+    alert("Failed to delete task");
+  }
+}

@@ -3,19 +3,25 @@ const {
   handleGenerateNewShortURL,
   handleGetAnalytics,
 } = require("../controllers/url");
+const Task = require("../models/task");
 
 const router = express.Router();
 
-router.get("/", (req, res) => {
-  return res.render("website/dashboard");
+router.get("/", async (req, res) => {
+  const task = await Task.find({});
+  return res.render("website/dashboard", { tasks: task });
 });
+// router.get("/", async (req, res) => {
+//   const task = await Task.find({});
+//   res.render("Website/myTasks", { tasks: task });
+// });
 
 router.get("/billing", (req, res) => {
   return res.render("website/billing");
 });
-router.get("/myTask", (req, res) => {
-  return res.render("website/myTasks");
-});
+// router.get("/myTask", (req, res) => {
+//   return res.render("website/myTasks");
+// });
 router.get("/pomodoro", (req, res) => {
   return res.render("website/pomodoro");
 });

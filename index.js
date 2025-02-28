@@ -3,11 +3,12 @@ const path = require("path");
 const cookieParser = require("cookie-parser");
 const { connectToMongoDB } = require("./connect");
 const { checkForAuthentication, restrictTo } = require("./middlewares/auth");
-const URL = require("./models/url");
+const Task = require("./models/task");
 
 const urlRoute = require("./routes/url");
 const staticRoute = require("./routes/staticRouter");
 const userRoute = require("./routes/user");
+const taskRoute = require("./routes/task");
 
 const app = express();
 const PORT = 8002;
@@ -25,6 +26,7 @@ app.use(cookieParser());
 app.use(checkForAuthentication);
 app.use(express.static(path.join(__dirname, "public")));
 
+app.use("/efficientHours/myTask", restrictTo(["NORMAL", "ADMIN"]), taskRoute);
 app.use("/efficientHours", restrictTo(["NORMAL", "ADMIN"]), urlRoute);
 app.use("/user", userRoute);
 app.use("/", staticRoute);
