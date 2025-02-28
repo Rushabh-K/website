@@ -32,3 +32,7 @@ npm start
 ```
 
 Setup up database in MongoDb for user authentication and to save data of the user to test the website
+<hr>
+The Time Management website is a simple, effective platform that helps users optimize their time and boost productivity. It offers tools for task prioritization, scheduling, goal setting, and progress tracking. Designed for both individuals and teams, it includes features like time blocking, habit tracking, and project management. With personalized insights and analytics, the website empowers users to improve time management, reduce procrastination, and achieve a balanced, efficient workflow.
+
+
