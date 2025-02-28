@@ -9,6 +9,7 @@ const urlRoute = require("./routes/url");
 const staticRoute = require("./routes/staticRouter");
 const userRoute = require("./routes/user");
 const taskRoute = require("./routes/task");
+const projectRoute = require("./routes/project");
 
 const app = express();
 const PORT = 8002;
@@ -27,6 +28,11 @@ app.use(checkForAuthentication);
 app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/efficientHours/myTask", restrictTo(["NORMAL", "ADMIN"]), taskRoute);
+app.use(
+  "/efficientHours/project",
+  restrictTo(["NORMAL", "ADMIN"]),
+  projectRoute
+);
 app.use("/efficientHours", restrictTo(["NORMAL", "ADMIN"]), urlRoute);
 app.use("/user", userRoute);
 app.use("/", staticRoute);

@@ -32,6 +32,22 @@
   -webkit-font-feature-settings: 'liga';
   -webkit-font-smoothing: antialiased;
 }
+
+.task-item {
+    margin-top: 15px;
+}
+
+#tasks {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.task-name h4 {
+    margin-bottom: -10px; 
+}
+
+
      </style>
     </head>
 <body>
@@ -140,98 +156,43 @@
             </div>
 
             <main>
-            <div class="projectCard">
-                <div class="projectTop">
-                <h2>Project Name<br><span>Company Name</span></h2>
-                <div class="projectsDots">
-                    <span class="material-symbols-outlined ">
-                        more_horiz
-                      </span> 
-                </div>
-            </div>
-            <div class="projectProgress">
-                <div class="process">
-                    <h2>In Progress</h2>
-                </div>
-                <div class="priority">
-                    <h2>High Priority</h2>
-                </div>
-            </div>
-            <div class="groupImg">
-                <a href="#">
-                    <img src="./Displa/clock-time.png" alt="img1">
-                </a>
-                <a href="#" style="--left: -10px;">
-                    <img src="./Displa/clock-time.png" alt="img2">
-                </a>
-                <a href="#" style="--left: -20px;">
-                    <img src="./Displa/clock-time.png" alt="img3">
-
-                <a href="#" style="--left: -30px;">
-                    <img src="./Displa/clock-time.png" alt="img4">
-                </a>
-                <a href="#" style="--left: -40px;">
-                    <img src="./Displa/clock-time.png" alt="img5">
-                </a>
-                <a href="#" style="--left: -20px;">
-                    <span class="number">+3</span>
-                </a>
-            </div>
-            <div class="task">
-                <h2>Task Done: <bold>35</bold>/ 50</h2>
-                <span class="line"></span>
-            </div>
-            <div class="due">
-                <h2>Due Date: 07 February</h2>
-            </div>
-            </div>
-        
-          <!-- second project card -->
-
-
-            <div class="projectCard projectCard2">
-                <div class="projectTop">
-                <h2>Project Name<br><span>Company Name</span></h2>
-                <div class="projectsDots">
-                    <span class="material-symbols-outlined ">
-                        more_horiz
-                      </span> 
-                </div>
-            </div>
-            <div class="projectProgress">
-                <div class="process">
-                    <h2>In Progress</h2>
-                </div>
-                <div class="priority">
-                    <h2>High Priority</h2>
-                </div>
-            </div>
-            <div class="groupImg">
-               
-                <a href="#" style="--left: -10px;">
-                    <img src="./Displa/20250117_123842.jpg" alt="">
-                </a>
-                <a href="#" style="--left: -20px;">
-                    <img src="./Displa/20250117_123842.jpg" alt="img3">
-
-                <a href="#" style="--left: -30px;">
-                    <img src="./Displa/20250117_123842.jpg" alt="img4">
-                </a>
-                <a href="#" style="--left: -40px;">
-                    <img src="./Displa/20250117_123842.jpg" alt="img5">
-                </a>
-                <a href="#" style="--left: -20px;">
-                    <span class="number">+3</span>
-                </a>
-            </div>
-            <div class="task">
-                <h2>Task Done: <bold>35</bold>/ 50</h2>
-                <span class="line"></span>
-            </div>
-            <div class="due">
-                <h2>Due Date: 07 February</h2>
-            </div>
-            </div>
+                <h2>Projects</h2>
+                <% projects.forEach(project => { %>
+                <div class="projects-grid">
+                    
+                      <div class="projectCard">
+                        <div class="projectTop">
+                          <h2><%= project.project %><br><span><%= project.description %></span></h2>
+                          <div class="projectsDots">
+                            <span class="material-symbols-outlined">more_horiz</span>
+                          </div>
+                        </div>
+                        
+                        <div class="projectProgress">
+                          <div class="process">
+                            <h2><%= project.status %></h2>
+                          </div>
+                          <div class="priority">
+                            <h2><%= project.priority %> Priority</h2>
+                          </div>
+                        </div>
+                
+                        <div class="dateSection">
+                          <div class="dateItem">
+                            <span class="material-symbols-outlined">calendar_today</span>
+                            Start: <%= new Date(project.dueDate).toLocaleDateString() %>
+                          </div>
+                          <div class="dateItem">
+                            <span class="material-symbols-outlined">event_available</span>
+                            Due: <%= new Date(project.startDate).toLocaleDateString() %>
+                          </div>
+                        </div>
+            
+                      </div>
+                    
+                  </div>
+                  <% }); %>
+                
 
             
               <div class="myTasks">
@@ -243,22 +204,20 @@
                           </span> 
                     </div>
                 </div>
-                <div class="tasks">
+                <div class="tasks" style="gap: 10px;">
                     
-                    <ul id="tasks">
+                    <ul id="tasks" >
                         <% tasks.forEach(task => { %>
-                            <li class="task-item" data-id="<%= task._id %>">
-                                <div class="task-info">
-                                    <span class="task-name"><h3><%= task.task %></h3></span>
+                            <li class="task-item" data-id="<%= task._id %>" >
+                                <div class="task-info" >
+                                    <span class="task-name" ><h4><%= task.task %></h4></span>
                                     <progress value="<%= task.progress %>" max="100"></progress>
-                                </div>
-                                <div class="task-actions">
                                 </div>
                             </li>
                         <% }); %>
                     </ul>
                 </div>
-              </div>
+              
               <div class="timeline">
                 <div class="timelineHead">
                     <h2>Time Line</h2>
@@ -322,6 +281,7 @@
                     </ul>
                 </div>
               </div>
+            </div>
 
               <div class="calendar">
                 <div class="calendarHead">
@@ -343,42 +303,43 @@
                     </ul>
                     <ul class="days" id="calendarDays"></ul>
                 </div>
-            </div>
+            
               <div class="messages">
                 <div class="massagesHead">
                     <h2>Messages</h2>
                 </div>
                 <div class="messageUser">
                     <div class="messagesUserImg">
-                       <img src="./Displa/Narendra.jpg" alt="img1">
+                       <img src="/images/DashBoard Images/WhatsApp Image 2025-01-18 at 17.54.56_35de9f9c.jpg" alt="img1">
                     </div>
-                    <h2>Narendra kavhat<br><span>Commodo Volutpot not</span></h2>
+                    <h2>Narendra kavhat<br><span>ASEP sem-1 project</span></h2>
                 </div>
                 <div class="messageUser">
                     <div class="messagesUserImg">
-                       <img src="./Displa/Narendra.jpg" alt="img1">
+                       <img src="/images/DashBoard Images/time-management-logo-template-check-mark-with-clock-icon-design-free-vector.jpg" alt="img1">
                     </div>
-                    <h2>Rushabh Kalme<br><span>Commodo Volutpot not</span></h2>
+                    <h2>Rushabh Kalme<br><span>Time Management Website</span></h2>
                 </div>
                 <div class="messageUser">
                     <div class="messagesUserImg">
-                       <img src="./Displa/Narendra.jpg" alt="img1">
+                       <img src="/images/DashBoard Images/WhatsApp Image 2025-01-18 at 17.54.56_35de9f9c.jpg" alt="img1">
                     </div>
-                    <h2>Atharva Kale<br><span>Commodo Volutpot not</span></h2>
+                    <h2>Atharva Kale<br><span>Efficient Hours</span></h2>
                 </div>
                 <div class="messageUser">
                     <div class="messagesUserImg">
-                       <img src="./Displa/Narendra.jpg" alt="img1">
+                       <img src="/images/DashBoard Images/time-management-logo-template-check-mark-with-clock-icon-design-free-vector.jpg" alt="img1">
                     </div>
-                    <h2>Rohan Katti<br><span>Commodo Volutpot not</span></h2>
+                    <h2>Rohan Katti<br><span>Release Stress</span></h2>
                 </div>
                 <div class="messageUser">
                     <div class="messagesUserImg">
-                       <img src="./Displa/Narendra.jpg" alt="img1">
+                       <img src="/images/DashBoard Images/WhatsApp Image 2025-01-18 at 17.54.56_35de9f9c.jpg" alt="img1">
                     </div>
-                    <h2>Sahil Karmanrkar<br><span>Commodo Volutpot not</span></h2>
+                    <h2>Sahil Karmanrkar<br><span>Manage Time Efficiently</span></h2>
                 </div>
               </div>
+            </div>
             </main>
 
         </div>

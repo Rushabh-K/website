@@ -10,6 +10,161 @@
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
       rel="stylesheet"
     />
+    <style>
+      .right .right {
+        position: relative;
+    }
+
+    .taskdetails {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        width: 300px;
+        background: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+    }
+
+    #task-details h2 {
+        margin-top: 0;
+        margin-bottom: 15px;
+    }
+
+    #task-form {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    #task-form input,
+    #task-form button {
+        padding: 8px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+    }
+
+    #task-form button {
+        background: #007bff;
+        color: white;
+        border: none;
+        cursor: pointer;
+    }
+
+    #cancel-task {
+        background: #dc3545;
+    }
+
+    /* Task List Container */
+    .tasklist {
+        margin: 20px;
+        padding: 20px;
+    }
+
+    #task-list ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1%;
+    }
+
+    /* Task Item Styling */
+    .task-item {
+        flex: 0 0 19%; /* 20% width minus 1% gap */
+        margin-bottom: 15px;
+        background: #f8f9fa;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+        border-left: 4px solid transparent;
+        padding: 15px;
+        box-sizing: border-box;
+    }
+
+    /* Priority Indicators */
+    .task-item[data-priority="high"] { border-left-color: #e74c3c; }
+    .task-item[data-priority="medium"] { border-left-color: #f1c40f; }
+    .task-item[data-priority="low"] { border-left-color: #2ecc71; }
+
+    /* Task Info Styling */
+    .task-info {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .task-name h3 {
+        margin: 0;
+        color: #2c3e50;
+        font-size: 1.1rem;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .task-priority h3 {
+        margin: 0;
+        padding: 4px 8px;
+        border-radius: 4px;
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        display: inline-block;
+    }
+
+    .task-due {
+        color: #7f8c8d;
+        font-size: 0.8rem;
+    }
+
+    /* Progress Bar Styling */
+    progress {
+        width: 100%;
+        height: 6px;
+    }
+
+    /* Task Actions Styling */
+    .task-actions {
+        margin-top: 10px;
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    .delete-btn {
+        padding: 6px 12px;
+        font-size: 0.8rem;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 1200px) {
+        .task-item {
+            flex: 0 0 24%; /* 4 per row */
+        }
+    }
+
+    @media (max-width: 992px) {
+        .task-item {
+            flex: 0 0 32%; /* 3 per row */
+        }
+    }
+
+    @media (max-width: 768px) {
+        .task-item {
+            flex: 0 0 49%; /* 2 per row */
+        }
+    }
+
+    @media (max-width: 480px) {
+        .task-item {
+            flex: 0 0 100%; /* 1 per row */
+        }
+        
+        .task-name h3 {
+            font-size: 1rem;
+        }
+    }
+    </style>
   </head>
   <body>
     <div class="container">
@@ -126,48 +281,62 @@
               <option value="high">High Priority</option>
             </select>
           </div>
-          <div class="projectlist">
-            <section id="project-list">
-              <ul id="projects"></ul>
-              <button id="add-project">Add New Project</button>
+          <div class="tasklist">
+            <section id="task-list">
+                
+                <ul id="tasks">
+                    <% projects.forEach(project => { %>
+                        <li class="task-item" data-id="<%= project._id %>">
+                            <div class="task-info">
+                                <span class="task-name"><h3><%= project.project %></h3></span>
+                                <span class="task-name"><h3><%= project.description%></h3></span>
+                                <span class="task-priority"></span><h3><%= project.status %></h3></span>
+                                <span class="task-priority"></span><h3><%= project.priority %></h3></span>
+                                <span class="task-due">Start: <%= new Date(project.dueDate).toLocaleDateString() %></span>
+                                <span class="task-due">Due: <%= new Date(project.startDate).toLocaleDateString() %></span>
+                            </div>
+                            <div class="task-actions">
+                                <button class="delete-btn" onclick="deleteTask('<%= project._id %>')">
+                                    Delete
+                                </button>
+                            </div>
+                        </li>
+                    <% }); %>
+                </ul>
+              
             </section>
-          </div>
-          <div class="projectdetails">
-            <section id="project-details" style="display: none">
-              <h2>Project Details</h2>
-              <form id="project-form">
-                <label for="project-name">Project Name:</label>
-                <input
-                  type="text"
-                  id="project-name"
-                  name="project-name"
-                  required
-                />
-                <label for="company-name">Company Name:</label>
-                <input
-                  type="text"
-                  id="company-name"
-                  name="company-name"
-                  required
-                />
-                <label for="priority">Priority:</label>
-                <select id="priority" name="priority">
-                  <option value="low">Low</option>
-                  <option value="medium">Medium</option>
-                  <option value="high">High</option>
-                </select>
-                <label for="due-date">Due Date:</label>
-                <input type="date" id="due-date" name="due-date" required />
-                <label for="project-file">Attach File:</label>
-                <input type="file" id="project-file" name="project-file" />
-                <button type="submit">Save Project</button>
-                <button type="button" id="cancel-project">Cancel</button>
-              </form>
+        </div>
+        
+        <div class="taskdetails">
+            <section id="task-details" >
+                <h2>Project Details</h2>
+                <form id="task-form" action="/efficientHours/project" method="post">
+                    <input type="text" name="project" placeholder="Project Name" required />
+                    <input type="text" name="description" placeholder="Project Description" required />
+  <input type="text" name="status" placeholder="Project Status" required />
+  <input type="text" name="priority" placeholder="priority" required />
+  <label > Start Date</label>
+  <input
+  type="date"
+  name="dueDate"
+  placeholder="dueDate"
+  required
+  />
+  <label>Due Date</label>
+  <input
+    type="date"
+    name="startDate"
+    placeholder="Project StartDate"
+    required
+  />
+                    <button type="submit">Save Project</button>
+                    <button type="button" id="cancel-task">Cancel</button>
+                </form>
             </section>
-          </div>
+        </div>
+          
         </div>
        </div>
-      <div class="naren"></div>
       
     </div>
     <script src="/javascript/project.js"></script>

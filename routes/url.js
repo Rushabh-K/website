@@ -4,12 +4,14 @@ const {
   handleGetAnalytics,
 } = require("../controllers/url");
 const Task = require("../models/task");
+const Project = require("../models/project");
 
 const router = express.Router();
 
 router.get("/", async (req, res) => {
   const task = await Task.find({});
-  return res.render("website/dashboard", { tasks: task });
+  const project = await Project.find({});
+  return res.render("website/dashboard", { tasks: task, projects: project });
 });
 // router.get("/", async (req, res) => {
 //   const task = await Task.find({});

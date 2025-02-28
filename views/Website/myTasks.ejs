@@ -383,16 +383,16 @@
                     <section id="task-details" >
                         <h2>Task Details</h2>
                         <form id="task-form" action="/efficientHours/myTask" method="post">
-                            <input type="text" name="task" placeholder="task" required />
-          <input type="text" name="priority" placeholder="priority" required />
-          
+                            <input type="text" name="task" placeholder="Add New Task" required />
+          <input type="text" name="priority" placeholder="Set Priority" required />
+          <label>Due Date</label>
           <input
             type="date"
             name="dueDate"
             placeholder="dueDate"
             required
           />
-          <input type="number" name="progress" placeholder="progress" required />
+          <input type="number" name="progress" placeholder="Percentage of Progress" required />
                             <button type="submit">Save Task</button>
                             <button type="button" id="cancel-task">Cancel</button>
                         </form>
