@@ -152,6 +152,61 @@
             cursor: pointer;
             font-weight: bold;
         }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.4);
+        }
+
+        .modal-content {
+            background-color: #fff;
+            margin: 15% auto;
+            padding: 20px;
+            border-radius: 8px;
+            width: 90%;
+            max-width: 400px;
+            position: relative;
+        }
+
+        .close {
+            position: absolute;
+            right: 20px;
+            top: 10px;
+            font-size: 28px;
+            cursor: pointer;
+        }
+
+        .setting-group {
+            margin: 15px 0;
+        }
+
+        .setting-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        .setting-group input {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        #saveSettings {
+            background-color: #6c5ce7;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
     </style>
 </head>
 <body>
@@ -263,20 +318,35 @@
 
                 <div class="pomodoro-container">
                     <div class="tabs">
-                        <button class="active" onclick="setTimer(1500, this)">Pomodoro</button>
-                        <button onclick="setTimer(300, this)">Short Break</button>
-                        <button onclick="setTimer(900, this)">Long Break</button>
+                        <button class="active" onclick="setTimer(pomodoroTime, this)">Pomodoro</button>
+                        <button onclick="setTimer(shortBreakTime, this)">Short Break</button>
+                        <button onclick="setTimer(longBreakTime, this)">Long Break</button>
+                        <button onclick="openSettings()">⚙️</button>
                     </div>
                     <div class="timer">25:00</div>
                     <button class="start-button" onclick="toggleTimer()">START</button>
-                    <div class="task-section">
-                        <h3>Tasks</h3>
-                        <button class="add-task" onclick="addTask()">+ Add Task</button>
-                        <ul class="task-list"></ul>
+                </div>
+            
+                <!-- Settings Modal -->
+                <div id="settingsModal" class="modal">
+                    <div class="modal-content">
+                        <span class="close" onclick="closeSettings()">&times;</span>
+                        <h3>Timer Settings</h3>
+                        <div class="setting-group">
+                            <label>Pomodoro (minutes):</label>
+                            <input type="number" id="pomodoroSetting" min="1" value="25">
+                        </div>
+                        <div class="setting-group">
+                            <label>Short Break (minutes):</label>
+                            <input type="number" id="shortBreakSetting" min="1" value="5">
+                        </div>
+                        <div class="setting-group">
+                            <label>Long Break (minutes):</label>
+                            <input type="number" id="longBreakSetting" min="1" value="15">
+                        </div>
+                        <button id="saveSettings" onclick="saveSettings()">Save Settings</button>
                     </div>
                 </div>
-
-            </div>
                 
            
         </main>
